@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ChainWork | Create Job</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;family=Berkeley+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary-container": "#cea7ff",
+                        "outline-variant": "#464554",
+                        "outline": "#908fa0",
+                        "tertiary": "#4edea3",
+                        "secondary-fixed-dim": "#d9b9ff",
+                        "surface-container-lowest": "#0d0e0f",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "on-surface-variant": "#c7c4d7",
+                        "on-primary-fixed": "#07006c",
+                        "surface-dim": "#121315",
+                        "on-tertiary": "#003824",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "primary-container": "#8083ff",
+                        "on-error": "#690005",
+                        "inverse-surface": "#e3e2e3",
+                        "on-background": "#e3e2e3",
+                        "secondary-fixed": "#eedcff",
+                        "inverse-on-surface": "#303032",
+                        "surface-container-low": "#1b1c1d",
+                        "surface-bright": "#38393a",
+                        "primary-fixed": "#e1e0ff",
+                        "on-tertiary-fixed": "#002113",
+                        "tertiary-fixed": "#6ffbbe",
+                        "secondary": "#d9b9ff",
+                        "on-secondary-fixed": "#290054",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "surface-container": "#1f2021",
+                        "background": "#121315",
+                        "error": "#ffb4ab",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "surface-container-highest": "#343536",
+                        "inverse-primary": "#494bd6",
+                        "primary": "#c0c1ff",
+                        "surface-variant": "#343536",
+                        "on-surface": "#e3e2e3",
+                        "error-container": "#93000a",
+                        "surface": "#121315",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-container": "#000703",
+                        "secondary-container": "#6600c0",
+                        "on-secondary": "#450086",
+                        "surface-container-high": "#292a2b",
+                        "on-secondary-fixed-variant": "#6300bb",
+                        "tertiary-container": "#00885d",
+                        "surface-tint": "#c0c1ff",
+                        "on-primary-container": "#0d0096",
+                        "on-primary": "#1000a9"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"],
+                        "mono": ["Berkeley Mono", "monospace"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(31, 32, 33, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .text-gradient-primary {
+            background: linear-gradient(135deg, #c0c1ff 0%, #6600c0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .btn-gradient {
+            background: linear-gradient(135deg, #c0c1ff 0%, #6600c0 100%);
+            box-shadow: 0 0 20px rgba(102, 0, 192, 0.3);
+        }
+        .mono-technical {
+            font-family: 'Berkeley Mono', monospace;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container/30">
+<!-- TopNavBar (Shared Component) -->
+<header class="fixed top-0 w-full z-50 bg-slate-900/60 backdrop-blur-xl border-b border-white/10 flex items-center justify-between px-6 py-3 w-full shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black tracking-tighter text-white bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-600">ChainWork</span>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="font-sans font-medium tracking-tight text-sm text-indigo-400 border-b-2 border-indigo-400 pb-1" href="#">Jobs</a>
+<a class="font-sans font-medium tracking-tight text-sm text-slate-400 hover:text-white transition-colors" href="#">Marketplace</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center bg-surface-container-lowest px-4 py-1.5 rounded-full border border-white/5">
+<span class="material-symbols-outlined text-outline text-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm placeholder:text-outline w-48" placeholder="Search opportunities..." type="text"/>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-white/5 p-2 rounded-full transition-all">notifications</button>
+<button class="flex items-center gap-2 bg-indigo-500/10 text-indigo-400 px-4 py-2 rounded-xl text-sm font-semibold hover:bg-indigo-500/20 transition-all active:scale-95">
+<span class="material-symbols-outlined text-sm">account_balance_wallet</span>
+                Connect Wallet
+            </button>
+</div>
+</header>
+<main class="pt-28 pb-20 min-h-screen px-6 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Left: Multi-Step Flow -->
+<div class="lg:col-span-7 space-y-12">
+<header>
+<h1 class="text-4xl font-extrabold tracking-tight mb-2">Forge a new <span class="text-gradient-primary">Job Contract</span></h1>
+<p class="text-on-surface-variant text-lg">Define your requirements and deploy them to the global talent network.</p>
+</header>
+<section class="space-y-10">
+<!-- Step 1: Core Identity -->
+<div class="space-y-6">
+<div class="flex items-center gap-3">
+<span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary-container/20 text-primary font-mono text-sm border border-primary/20">01</span>
+<h2 class="text-xl font-bold tracking-tight">Job Identity</h2>
+</div>
+<div class="space-y-4">
+<div class="group">
+<label class="block text-xs font-semibold uppercase tracking-widest text-outline mb-2 ml-1">Position Title</label>
+<input class="w-full bg-surface-container-low border-none rounded-2xl py-4 px-5 text-lg focus:ring-2 focus:ring-primary/20 transition-all placeholder:text-outline-variant" placeholder="e.g. Senior Smart Contract Auditor" type="text"/>
+</div>
+<div class="group">
+<label class="block text-xs font-semibold uppercase tracking-widest text-outline mb-2 ml-1">Detailed Brief</label>
+<div class="bg-surface-container-low rounded-2xl overflow-hidden focus-within:ring-2 focus-within:ring-primary/20 transition-all">
+<div class="flex gap-4 p-3 border-b border-outline-variant/10 bg-surface-container/50">
+<button class="material-symbols-outlined text-outline hover:text-on-surface">format_bold</button>
+<button class="material-symbols-outlined text-outline hover:text-on-surface">format_italic</button>
+<button class="material-symbols-outlined text-outline hover:text-on-surface">list</button>
+<button class="material-symbols-outlined text-outline hover:text-on-surface">link</button>
+</div>
+<textarea class="w-full bg-transparent border-none py-4 px-5 focus:ring-0 text-on-surface-variant" placeholder="Describe the scope, deliverables, and technical requirements..." rows="6"></textarea>
+</div>
+</div>
+</div>
+</div>
+<!-- Step 2: Financials & Chain -->
+<div class="space-y-6">
+<div class="flex items-center gap-3">
+<span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary-container/20 text-primary font-mono text-sm border border-primary/20">02</span>
+<h2 class="text-xl font-bold tracking-tight">Network &amp; Budget</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="group">
+<label class="block text-xs font-semibold uppercase tracking-widest text-outline mb-2 ml-1">Fixed Budget (USDC)</label>
+<div class="relative">
+<span class="absolute left-5 top-1/2 -translate-y-1/2 mono-technical text-outline">$</span>
+<input class="w-full bg-surface-container-low border-none rounded-2xl py-4 pl-10 pr-5 text-lg mono-technical focus:ring-2 focus:ring-primary/20 transition-all" placeholder="0.00" type="number"/>
+</div>
+</div>
+<div class="group">
+<label class="block text-xs font-semibold uppercase tracking-widest text-outline mb-2 ml-1">Timeline</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-5 top-1/2 -translate-y-1/2 text-outline">schedule</span>
+<select class="w-full bg-surface-container-low border-none rounded-2xl py-4 pl-12 pr-5 text-lg focus:ring-2 focus:ring-primary/20 transition-all appearance-none">
+<option>Fixed 2 Weeks</option>
+<option>1 Month</option>
+<option>Long Term</option>
+</select>
+</div>
+</div>
+</div>
+<div class="space-y-4 pt-4">
+<label class="block text-xs font-semibold uppercase tracking-widest text-outline ml-1">Target Blockchain</label>
+<div class="grid grid-cols-3 gap-4">
+<!-- Solana -->
+<button class="flex flex-col items-center gap-3 p-6 rounded-2xl bg-surface-container-high border-2 border-primary transition-all ring-4 ring-primary/10">
+<div class="w-10 h-10 rounded-full bg-black/20 flex items-center justify-center">
+<img alt="Solana" class="w-6 h-6" data-alt="Official 3D glass texture logo of the Solana blockchain icon with vibrant purple and green gradients" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQNg4fTkMYDYlccbojnj3HwIL_kti_Ko2VoPBHRa3yeOkBP0dSQgV_IY4DpfmOuFFE3FMYLcBsscmKi-50HNLFE2gk3tEeNQU8KN_kBgyYR9hZKhgwV5NFXI6Cow6gXV-rCdLl0OhVe1cxPSF3dBNnTIze3JVZAy7hjQp5XRGUJbCx3ApC2flwPsQHPhgkLL4ta9qUgxIOh6C3SV3eHoEw5YWaWJTzl94hMI9QRlD623GoF7_PI1CN7Pw8O4Wz4BnRv1UEFKIrO6c"/>
+</div>
+<span class="text-sm font-bold">Solana</span>
+</button>
+<!-- Ethereum -->
+<button class="flex flex-col items-center gap-3 p-6 rounded-2xl bg-surface-container-low border-2 border-transparent hover:bg-surface-container-high transition-all">
+<div class="w-10 h-10 rounded-full bg-black/20 flex items-center justify-center">
+<img alt="Ethereum" class="w-6 h-6" data-alt="Elegant 3D render of the Ethereum crystal logo with holographic reflections on a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANOdM8WCPJzkHXMHjvdmOmXv_AGr1AY3kNckt24CkRDyDnW7Lh5DorwnCHleRfd7dK3WYHVqoSY_te4S4jTEZO99N1oB56jd9BNuWCQ9kvklxU_d-p0pLpDBfMneD2GFNO8o8-mujpECygYgIU1xTyFlwewlNYmxX2YBgB4-uNPkQvybscYfsdMplE-2VnQFtbwG0vTP5ciFt95dJbxgwyRn4WUW39ScmehlgFligzNA-u4OAxXuN2Va2L0VZbFCHtGjqPAd3gAao"/>
+</div>
+<span class="text-sm font-bold text-outline">Ethereum</span>
+</button>
+<!-- Polygon -->
+<button class="flex flex-col items-center gap-3 p-6 rounded-2xl bg-surface-container-low border-2 border-transparent hover:bg-surface-container-high transition-all">
+<div class="w-10 h-10 rounded-full bg-black/20 flex items-center justify-center">
+<img alt="Polygon" class="w-6 h-6" data-alt="Dynamic purple 3D geometric logo of the Polygon Matic network with a polished metallic finish" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZ5_DA2GvryaaeKivaJ36BtiBPEyHQSmGDTfb_fTMPel6FaFrqXoH3oYrVR2gH8Y2bZ3ZzDUKKHOPWOlLSkH1nlBxzeRNenVcpfJ88Cko3ygIqBg9TF7SglzfeDnddigxcQ0wWr9rUfug0Qk3l5J9bKEoqGr-hcOt7rnfX_NTTiD6mO6G3wPdWXMQQGf0AepODyUBmux_cGSEoeQPWgTDmPOpufNWtlWh8lTGsydjH44DdTIRTDqqYACNFsprfsTstJKhE3U7J6YU"/>
+</div>
+<span class="text-sm font-bold text-outline">Polygon</span>
+</button>
+</div>
+</div>
+</div>
+<div class="pt-8">
+<button class="w-full btn-gradient py-5 rounded-2xl text-white font-bold text-lg flex items-center justify-center gap-3 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined" data-weight="fill">rocket_launch</span>
+                        Submit to Blockchain
+                    </button>
+<p class="text-center text-xs text-outline mt-4 font-mono uppercase tracking-widest">Transaction fee: 0.002 SOL</p>
+</div>
+</section>
+</div>
+<!-- Right: Preview Sidebar -->
+<aside class="lg:col-span-5 sticky top-28 h-fit">
+<div class="glass-panel p-8 rounded-2xl border border-white/5 shadow-2xl relative overflow-hidden">
+<!-- Visual Accent -->
+<div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/10 blur-[80px] rounded-full"></div>
+<div class="relative">
+<div class="flex justify-between items-start mb-8">
+<span class="px-3 py-1 bg-tertiary/10 text-tertiary text-[10px] font-bold uppercase tracking-widest rounded-full border border-tertiary/20">Preview Mode</span>
+<div class="flex -space-x-2">
+<img class="w-8 h-8 rounded-full border-2 border-surface" data-alt="Professional headshot of a diverse male tech professional with soft office lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_xBqWcw5Vca3d5j9ThAApRLF3n2qzSHxQhQO0wiWTEDHjlVXEzP8GKP6HiUb5tjXBEcJOuq--PfGwHNyZBCB8gUtHBtyO19adSpxonn1CqsMXwBb350jn041O-yDIm0IluSNBGHXFh7MOeIceov44LVZjzxj8cWoCn3cFedFta_MDGFbxu-6yqTm5Ex5111ePedaoiTxn0Q_wZu-uKmX1WiBxcBAD6sua8mavg2bEf81fVMbUdX0O0IIhcLXWFqMX3pq1CuEU2jI"/>
+<img class="w-8 h-8 rounded-full border-2 border-surface" data-alt="Portrait of a creative female developer with colorful lighting and glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARQsf2DHfajA0fbqRI39RWmFimljUnkUF6ksWZiNf0cu6mXDXAeg8zZ6l9A8Lm96Y7r1y9Omo2l8QmZTrcQJ1ffQ15_bAhF9BX9fNHbVFDZWrgW5wYhBhPPh3QJZQHdzP6PUT7K10aMG5UGV9UpXFrbj92lkEfE1TlUmz4jwX7c6sTB2gOVik7FyaGyxyQmnix-KqrsBssb3a4185UhrmSyLfpORW1rgFjqffu14UDN56bOn5eC-hKFbybcdFctMrW7V5_VnbOMXI"/>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border-2 border-surface flex items-center justify-center text-[10px] font-bold">+12</div>
+</div>
+</div>
+<div class="space-y-6">
+<div class="space-y-2">
+<h3 class="text-2xl font-bold leading-tight">Senior Smart Contract Auditor</h3>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1.5 px-2 py-1 bg-surface-container rounded-lg">
+<img alt="Solana" class="w-4 h-4" data-alt="Miniature Solana logo icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbel8ejHG4vfICGxijPnBBjTPwNI2woFBIKOHqjdQJ-IX6CFeH-7Vpt8e5COfF0BrGcjv3aXAELyZNSubuhegjIE53iD58awsQLVwa1xmBaxwJE1qA_iL1xGq_K0f8g5fyzUMp4K4qkqw5aGdOH8mPr9bijXILfWrTWpUONjBsHwVnFbl_vXppLTyr249DeFwDWa34RRqy_6liYp87o2fmHcefm0If5vXLYGZxO1YC6ocU4oX0GNLNdswI2jqRYqc7h2RYk5I236E"/>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">Solana Mainnet</span>
+</div>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="text-[10px] font-mono text-outline uppercase tracking-widest">Updated just now</span>
+</div>
+</div>
+<div class="h-px bg-gradient-to-r from-transparent via-outline-variant/30 to-transparent"></div>
+<div class="space-y-4">
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                                Looking for a security expert to audit a set of Rust-based Anchor programs for an upcoming DeFi protocol...
+                            </p>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-4 rounded-xl bg-surface-container-low border border-white/5">
+<span class="text-[10px] uppercase tracking-widest text-outline block mb-1">Budget</span>
+<span class="text-xl font-bold mono-technical">$5,200</span>
+</div>
+<div class="p-4 rounded-xl bg-surface-container-low border border-white/5">
+<span class="text-[10px] uppercase tracking-widest text-outline block mb-1">Escrow</span>
+<span class="text-xl font-bold text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">lock</span>
+                                        SECURE
+                                    </span>
+</div>
+</div>
+</div>
+<div class="pt-4 flex flex-wrap gap-2">
+<span class="text-[10px] font-semibold px-2 py-1 rounded bg-secondary-container/20 text-on-secondary-container">Rust</span>
+<span class="text-[10px] font-semibold px-2 py-1 rounded bg-secondary-container/20 text-on-secondary-container">Solana</span>
+<span class="text-[10px] font-semibold px-2 py-1 rounded bg-secondary-container/20 text-on-secondary-container">Security Audit</span>
+</div>
+</div>
+</div>
+<div class="mt-10 pt-6 border-t border-white/5 flex items-center gap-4 text-outline">
+<span class="material-symbols-outlined text-lg">info</span>
+<p class="text-[11px] leading-tight">This is how your job will appear to applicants. You can edit this information at any time before deploying the smart contract.</p>
+</div>
+</div>
+<!-- Bottom Helper -->
+<div class="mt-6 flex items-center justify-between px-4 text-xs font-mono text-outline-variant">
+<span>CONTRACT_VER_4.2</span>
+<span class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+                    SYNCING TO CLOUD
+                </span>
+</div>
+</aside>
+</main>
+<!-- Mobile Bottom Nav (Suppressed for transactional flow) -->
+</body></html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Berkeley+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-variant": "#343536",
+              "on-background": "#e3e2e3",
+              "on-surface-variant": "#c7c4d7",
+              "tertiary": "#4edea3",
+              "on-tertiary-fixed-variant": "#005236",
+              "secondary-fixed-dim": "#d9b9ff",
+              "primary-fixed-dim": "#c0c1ff",
+              "primary-fixed": "#e1e0ff",
+              "secondary": "#d9b9ff",
+              "on-surface": "#e3e2e3",
+              "tertiary-fixed-dim": "#4edea3",
+              "outline": "#908fa0",
+              "on-primary-container": "#0d0096",
+              "inverse-surface": "#e3e2e3",
+              "on-tertiary-container": "#000703",
+              "on-secondary-fixed": "#290054",
+              "background": "#121315",
+              "on-secondary-fixed-variant": "#6300bb",
+              "on-primary": "#1000a9",
+              "on-tertiary": "#003824",
+              "on-error-container": "#ffdad6",
+              "on-secondary-container": "#cea7ff",
+              "on-secondary": "#450086",
+              "surface-container-lowest": "#0d0e0f",
+              "surface-bright": "#38393a",
+              "tertiary-container": "#00885d",
+              "surface-container-low": "#1b1c1d",
+              "surface-tint": "#c0c1ff",
+              "primary-container": "#8083ff",
+              "inverse-on-surface": "#303032",
+              "surface-container": "#1f2021",
+              "error": "#ffb4ab",
+              "surface-dim": "#121315",
+              "secondary-container": "#6600c0",
+              "on-primary-fixed": "#07006c",
+              "outline-variant": "#464554",
+              "inverse-primary": "#494bd6",
+              "on-primary-fixed-variant": "#2f2ebe",
+              "on-tertiary-fixed": "#002113",
+              "surface-container-highest": "#343536",
+              "surface": "#121315",
+              "primary": "#c0c1ff",
+              "secondary-fixed": "#eedcff",
+              "surface-container-high": "#292a2b",
+              "tertiary-fixed": "#6ffbbe",
+              "on-error": "#690005",
+              "error-container": "#93000a"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"],
+              "mono": ["Berkeley Mono"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(31, 32, 33, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(192, 193, 255, 0.05);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/60 backdrop-blur-xl border-b border-white/10 shadow-[0_0_40px_rgba(99,102,241,0.04)] flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-purple-600">ChainWork</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-slate-400 hover:text-white transition-colors font-sans text-sm tracking-tight" href="#">Jobs</a>
+<a class="text-slate-400 hover:text-white transition-colors font-sans text-sm tracking-tight" href="#">Marketplace</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/5">
+<span class="w-2 h-2 rounded-full bg-tertiary shadow-[0_0_8px_#4edea3]"></span>
+<span class="font-mono text-xs text-on-surface-variant">Ethereum</span>
+</div>
+<button class="material-symbols-outlined text-slate-400 hover:text-white transition-all duration-300 active:scale-95" data-icon="notifications">notifications</button>
+<button class="bg-gradient-to-r from-indigo-300 to-purple-600 text-on-primary-container px-4 py-2 rounded-xl font-sans text-sm font-bold active:scale-95 transition-all">Connect Wallet</button>
+<img alt="User Avatar" class="w-8 h-8 rounded-full border border-white/10" data-alt="Close up portrait of a modern digital artist avatar with neon lighting accents and clean minimalist aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhA5PexG6BRY92-jeCOmo4PE3_Z-NK6I0ClTkkZkFuVncnDJoYxr45Yf1TYJVnT8ZdoFOnlVi0VC5XpRFFvhH_f7JYknql3NpVh-yBJyAZy6-mMlBoBfBZGP50OmGF3FZ8AEiZGLk9DecD4lr-8vZdIbtaKD1LxF-Zxy2f-ymgZ9KM6KuTQUpH6qvM5yAlBqT7frUAnk-72w_C5jrnBr00Ac6OR3sx3BuLzbkVZfVVNCoqABHpHyYazJsqDnIwPVyZB1lhcdEubr0"/>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 bg-slate-900/50 backdrop-blur-lg border-r border-white/5 flex flex-col py-6 gap-2 hidden lg:flex">
+<div class="px-6 mb-6">
+<h3 class="text-white font-bold text-xl">ChainWork</h3>
+<p class="text-slate-400 text-xs">The Digital Curator</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:text-slate-200 hover:bg-white/5 transition-all group" href="#">
+<span class="material-symbols-outlined" data-icon="work">work</span>
+<span class="font-sans text-sm font-medium">Jobs</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:text-slate-200 hover:bg-white/5 transition-all group" href="#">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+<span class="font-sans text-sm font-medium">Marketplace</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:text-slate-200 hover:bg-white/5 transition-all group" href="#">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+<span class="font-sans text-sm font-medium">Messages</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-white bg-indigo-500/10 border-r-2 border-indigo-500 transition-all group" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="font-sans text-sm font-medium">Notifications</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:text-slate-200 hover:bg-white/5 transition-all group" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-sans text-sm font-medium">Transactions</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:text-slate-200 hover:bg-white/5 transition-all group" href="#">
+<span class="material-symbols-outlined" data-icon="star">star</span>
+<span class="font-sans text-sm font-medium">Reviews</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:text-slate-200 hover:bg-white/5 transition-all group" href="#">
+<span class="material-symbols-outlined" data-icon="folder_shared">folder_shared</span>
+<span class="font-sans text-sm font-medium">Portfolio</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:text-slate-200 hover:bg-white/5 transition-all group" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-sans text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="px-6 mt-auto flex flex-col gap-2">
+<button class="w-full py-3 bg-indigo-500/10 text-indigo-400 rounded-xl font-bold text-sm hover:bg-indigo-500/20 transition-all">Post a Job</button>
+<a class="flex items-center gap-3 py-2 text-slate-400 hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="text-sm">Help Center</span>
+</a>
+<a class="flex items-center gap-3 py-2 text-slate-400 hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="text-sm">Log Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="pt-24 pb-12 px-6 lg:ml-64 flex flex-col items-center">
+<div class="w-full max-w-4xl space-y-10">
+<!-- Editorial Header -->
+<header class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<h1 class="text-5xl font-black tracking-tight mb-2">Notifications</h1>
+<p class="text-on-surface-variant text-lg">Stay updated with your curated Web3 workspace.</p>
+</div>
+<button class="flex items-center gap-2 px-5 py-2.5 bg-surface-container-highest/40 backdrop-blur-xl border border-white/5 rounded-xl text-primary text-sm font-semibold hover:bg-surface-container-highest transition-all group">
+<span class="material-symbols-outlined text-sm group-hover:rotate-12 transition-transform" data-icon="done_all">done_all</span>
+                    Mark as read
+                </button>
+</header>
+<!-- Navigation / Filters -->
+<div class="flex items-center gap-1 p-1 bg-surface-container-lowest/50 rounded-2xl w-fit backdrop-blur-md">
+<button class="px-6 py-2 rounded-xl text-sm font-bold bg-primary text-on-primary-container shadow-lg shadow-primary/20 transition-all">All</button>
+<button class="px-6 py-2 rounded-xl text-sm font-medium text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all">Unread</button>
+<button class="px-6 py-2 rounded-xl text-sm font-medium text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all">Transactions</button>
+<button class="px-6 py-2 rounded-xl text-sm font-medium text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all">Jobs</button>
+</div>
+<!-- Notifications List -->
+<div class="space-y-3">
+<!-- Notification Item: Proposal Received -->
+<div class="glass-card p-5 rounded-2xl flex items-start gap-5 hover:translate-x-1 transition-transform cursor-pointer relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="flex-shrink-0 w-12 h-12 rounded-xl bg-primary-container/20 flex items-center justify-center text-primary border border-primary/10">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-bold text-on-surface truncate">Proposal received</h4>
+<span class="font-mono text-[10px] uppercase tracking-widest text-on-surface-variant bg-surface-container-high px-2 py-0.5 rounded-full">Just Now</span>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed">
+<span class="text-primary font-semibold">Alex Rivera</span> submitted a proposal for <span class="italic">"Solidity Smart Contract Audit"</span>.
+                        </p>
+</div>
+<div class="flex-shrink-0 self-center">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+</div>
+</div>
+<!-- Notification Item: Payment Released -->
+<div class="glass-card p-5 rounded-2xl flex items-start gap-5 hover:translate-x-1 transition-transform cursor-pointer group">
+<div class="flex-shrink-0 w-12 h-12 rounded-xl bg-tertiary/10 flex items-center justify-center text-tertiary border border-tertiary/10">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet" data-weight="fill" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-bold text-on-surface truncate">Payment released</h4>
+<span class="font-mono text-[10px] uppercase tracking-widest text-on-surface-variant">2 hours ago</span>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed">
+                            Payment of <span class="font-mono text-tertiary">2.45 ETH</span> has been released from escrow for Milestone #2.
+                        </p>
+</div>
+</div>
+<!-- Notification Item: Proposal Accepted -->
+<div class="glass-card p-5 rounded-2xl flex items-start gap-5 hover:translate-x-1 transition-transform cursor-pointer group">
+<div class="flex-shrink-0 w-12 h-12 rounded-xl bg-secondary-container/20 flex items-center justify-center text-secondary border border-secondary/10">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-bold text-on-surface truncate">Proposal accepted</h4>
+<span class="font-mono text-[10px] uppercase tracking-widest text-on-surface-variant">5 hours ago</span>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed">
+                            Your proposal for <span class="text-secondary font-semibold">"DAO Governance UI Design"</span> was accepted by the client.
+                        </p>
+</div>
+</div>
+<!-- Notification Item: New Job Posted -->
+<div class="glass-card p-5 rounded-2xl flex items-start gap-5 hover:translate-x-1 transition-transform cursor-pointer group">
+<div class="flex-shrink-0 w-12 h-12 rounded-xl bg-primary-container/10 flex items-center justify-center text-primary border border-primary/10">
+<span class="material-symbols-outlined" data-icon="campaign">campaign</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-bold text-on-surface truncate">New job posted</h4>
+<span class="font-mono text-[10px] uppercase tracking-widest text-on-surface-variant">8 hours ago</span>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed">
+                            A new project matching your skills: <span class="italic">"Full-stack Web3 Dashboard Development"</span> was just posted.
+                        </p>
+</div>
+</div>
+<!-- Date Separator (Tonal Shift) -->
+<div class="py-6 flex items-center gap-4">
+<span class="font-mono text-xs text-outline tracking-widest uppercase">Yesterday</span>
+<div class="flex-1 h-[1px] bg-outline-variant/20"></div>
+</div>
+<!-- Older Notification: Review Received -->
+<div class="glass-card p-5 rounded-2xl flex items-start gap-5 opacity-60 hover:opacity-100 transition-all hover:translate-x-1 cursor-pointer group">
+<div class="flex-shrink-0 w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center text-outline border border-white/5">
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-bold text-on-surface truncate">New review received</h4>
+<span class="font-mono text-[10px] uppercase tracking-widest text-on-surface-variant">May 14, 2024</span>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed">
+<span class="text-on-surface">Genesis Labs</span> left you a 5-star review for the project <span class="italic">"L2 Bridge Integration"</span>.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Bento Summary / Featured Action -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-12">
+<div class="md:col-span-2 glass-card p-8 rounded-2xl bg-gradient-to-br from-surface-container/80 to-primary/5 border border-primary/10 flex flex-col justify-between">
+<div>
+<span class="font-mono text-xs text-primary uppercase tracking-[0.2em] mb-4 block">Recommended for you</span>
+<h3 class="text-3xl font-bold text-white mb-4 leading-tight">Your Weekly Curator Report is Ready</h3>
+<p class="text-on-surface-variant max-w-md">We've compiled a summary of 24 projects matching your profile in the Decentralized Infrastructure sector.</p>
+</div>
+<button class="mt-8 w-fit px-8 py-3 bg-white text-background rounded-xl font-bold text-sm hover:scale-105 transition-all">View Full Report</button>
+</div>
+<div class="glass-card p-8 rounded-2xl flex flex-col items-center justify-center text-center gap-4 group">
+<div class="w-20 h-20 rounded-full bg-secondary/10 flex items-center justify-center text-secondary mb-2 relative">
+<span class="material-symbols-outlined text-4xl" data-icon="bolt">bolt</span>
+<div class="absolute inset-0 rounded-full border-2 border-secondary/20 scale-125 group-hover:scale-150 group-hover:opacity-0 transition-all duration-700"></div>
+</div>
+<h4 class="font-bold text-lg">Boost Presence</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">Increase notification priority for your proposals by 30% with WorkBoost.</p>
+<button class="text-secondary font-bold text-sm underline decoration-secondary/20 underline-offset-4 hover:decoration-secondary transition-all">Upgrade Now</button>
+</div>
+</section>
+</div>
+</main>
+<!-- Bottom Navigation (Mobile Only) -->
+<nav class="fixed bottom-0 w-full bg-surface-container-highest/80 backdrop-blur-2xl border-t border-white/10 flex justify-around items-center h-16 md:hidden z-50">
+<button class="flex flex-col items-center text-slate-400">
+<span class="material-symbols-outlined" data-icon="work">work</span>
+</button>
+<button class="flex flex-col items-center text-slate-400">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+</button>
+<button class="flex flex-col items-center text-primary">
+<span class="material-symbols-outlined" data-icon="notifications" data-weight="fill" style="font-variation-settings: 'FILL' 1;">notifications</span>
+</button>
+<button class="flex flex-col items-center text-slate-400">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+</button>
+<img alt="User" class="w-6 h-6 rounded-full border border-white/10" data-alt="Portrait avatar icon for mobile navigation footer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3kvwSN51Mh5yeOe1c8XCgeze5aIYQfn4CaoxwEcYIwTVYtxrj13SA-876pfJnebg4pNhVpBwGYUP6P1Xf1678x0aahRZhq2gCWuR0SYP5CbG4ZZKHycJixTV_xPrW3i5aqVbzYKDTtqAZOPZ6-xI628hSVjL0S0yChlkxe2Ro99le2JRo0SYfwbkluK-vykv0rPZiFDCST9c2os-2Tt5iM_AljvvWQltm0eF1-w-eMEJyKdjTC_q-R7dQIgjSxW-8zAXdEK2z9PQ"/>
+</nav>
+</body></html>

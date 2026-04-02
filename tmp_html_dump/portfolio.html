@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ChainWork Portfolio - Digital Curator</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;family=Berkeley+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-variant": "#343536",
+            "on-background": "#e3e2e3",
+            "on-surface-variant": "#c7c4d7",
+            "tertiary": "#4edea3",
+            "on-tertiary-fixed-variant": "#005236",
+            "secondary-fixed-dim": "#d9b9ff",
+            "primary-fixed-dim": "#c0c1ff",
+            "primary-fixed": "#e1e0ff",
+            "secondary": "#d9b9ff",
+            "on-surface": "#e3e2e3",
+            "tertiary-fixed-dim": "#4edea3",
+            "outline": "#908fa0",
+            "on-primary-container": "#0d0096",
+            "inverse-surface": "#e3e2e3",
+            "on-tertiary-container": "#000703",
+            "on-secondary-fixed": "#290054",
+            "background": "#121315",
+            "on-secondary-fixed-variant": "#6300bb",
+            "on-primary": "#1000a9",
+            "on-tertiary": "#003824",
+            "on-error-container": "#ffdad6",
+            "on-secondary-container": "#cea7ff",
+            "on-secondary": "#450086",
+            "surface-container-lowest": "#0d0e0f",
+            "surface-bright": "#38393a",
+            "tertiary-container": "#00885d",
+            "surface-container-low": "#1b1c1d",
+            "surface-tint": "#c0c1ff",
+            "primary-container": "#8083ff",
+            "inverse-on-surface": "#303032",
+            "surface-container": "#1f2021",
+            "error": "#ffb4ab",
+            "surface-container-high": "#292a2b",
+            "tertiary-fixed": "#6ffbbe",
+            "on-error": "#690005",
+            "error-container": "#93000a",
+            "surface-container-highest": "#343536",
+            "surface": "#121315",
+            "primary": "#c0c1ff",
+            "secondary-fixed": "#eedcff",
+            "surface-dim": "#121315",
+          },
+          fontFamily: {
+            "headline": ["Inter"],
+            "body": ["Inter"],
+            "label": ["Inter"],
+            "mono": ["Berkeley Mono"]
+          },
+          borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1.5rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      background-color: #121315;
+      color: #e3e2e3;
+      font-family: 'Inter', sans-serif;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      vertical-align: middle;
+    }
+    .glass-card {
+      background: rgba(52, 53, 54, 0.4);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(192, 193, 255, 0.08);
+    }
+    .premium-gradient {
+      background: linear-gradient(135deg, #c0c1ff 0%, #6600c0 100%);
+    }
+    .text-glow {
+      text-shadow: 0 0 20px rgba(192, 193, 255, 0.3);
+    }
+  </style>
+</head>
+<body class="bg-background overflow-x-hidden">
+<!-- TopAppBar from JSON -->
+<header class="fixed top-0 w-full z-50 bg-surface/60 backdrop-blur-xl border-b border-white/10 shadow-[0_0_40px_rgba(99,102,241,0.04)] flex justify-between items-center px-6 h-16 w-full font-sans text-sm tracking-tight">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-purple-600">ChainWork</span>
+<div class="hidden md:flex gap-6">
+<!-- Links would go here if provided in JSON -->
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10">
+<span class="w-2 h-2 rounded-full bg-tertiary shadow-[0_0_8px_#4edea3]"></span>
+<span class="font-mono text-xs text-on-surface-variant">Ethereum</span>
+</div>
+<button class="material-symbols-outlined text-slate-400 hover:text-white transition-all">notifications</button>
+<button class="bg-indigo-400 text-on-primary-container px-4 py-2 rounded-xl font-bold active:scale-95 duration-200 transition-all">Connect Wallet</button>
+<img alt="User Avatar" class="w-8 h-8 rounded-full border border-white/10" data-alt="professional male portrait with neutral background and soft studio lighting, sharp focus on eyes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCydiBSpxpHv3ZvkLQLybLimoJpAPycSpA6jSOSaexqY0jPF8r-S95avcVGhGZbxjpOIVAYXGWlc3TT7KBQW3TILIf-s0OGyVAh1uXK2i6-U2f2IfTJ7TylU9TQLPknVWEYWw4ZB8gUp_4fC9-HL4mfjnj2saZeAckg2VKZsjVcrzUBr0Gz82G5OshQXoBOv3iGpYB94wVFLfYNrF3Pp0v5eTiWhI-RB0ZXaNdpeWREuM2EP5A6fmcmnwM50pl-s3QbunYtQYvo0w"/>
+</div>
+</header>
+<!-- SideNavBar from JSON -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 bg-slate-900/50 backdrop-blur-lg border-r border-white/5 flex flex-col py-6 gap-2 hidden lg:flex">
+<div class="px-6 mb-6">
+<h2 class="text-white font-bold text-xl">ChainWork</h2>
+<p class="text-slate-400 text-xs">The Digital Curator</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:text-slate-200 hover:bg-white/5 transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">work</span> Jobs
+      </a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:text-slate-200 hover:bg-white/5 transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">storefront</span> Marketplace
+      </a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:text-slate-200 hover:bg-white/5 transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">chat</span> Messages
+      </a>
+<a class="flex items-center gap-3 px-6 py-3 text-white bg-indigo-500/10 border-r-2 border-indigo-500 transition-all" href="#">
+<span class="material-symbols-outlined">folder_shared</span> Portfolio
+      </a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:text-slate-200 hover:bg-white/5 transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span> Transactions
+      </a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:text-slate-200 hover:bg-white/5 transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">star</span> Reviews
+      </a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:text-slate-200 hover:bg-white/5 transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">settings</span> Settings
+      </a>
+</nav>
+<div class="mt-auto px-6 space-y-2">
+<button class="w-full premium-gradient text-white font-bold py-3 rounded-xl shadow-lg shadow-indigo-500/20 active:scale-95 transition-all">Post a Job</button>
+<div class="pt-4 border-t border-white/5 space-y-1">
+<a class="flex items-center gap-3 py-2 text-slate-400 hover:text-white transition-colors text-xs" href="#">
+<span class="material-symbols-outlined text-sm">help</span> Help Center
+        </a>
+<a class="flex items-center gap-3 py-2 text-slate-400 hover:text-white transition-colors text-xs" href="#">
+<span class="material-symbols-outlined text-sm">logout</span> Log Out
+        </a>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:ml-64 pt-24 px-6 pb-12 min-h-screen">
+<!-- User Profile Header Section -->
+<section class="max-w-6xl mx-auto mb-16">
+<div class="relative group">
+<!-- Profile Backdrop Decor -->
+<div class="absolute -top-24 -right-24 w-96 h-96 bg-indigo-600/10 rounded-full blur-[120px]"></div>
+<div class="absolute -bottom-12 -left-12 w-64 h-64 bg-purple-600/10 rounded-full blur-[100px]"></div>
+<div class="relative flex flex-col md:flex-row items-end md:items-center gap-8 glass-card p-8 rounded-2xl">
+<div class="relative">
+<div class="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden border-2 border-indigo-400/20 shadow-2xl">
+<img alt="Alex Rivers" class="w-full h-full object-cover" data-alt="close-up portrait of a confident creative professional with stylish glasses, soft daylight, minimalist background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7B3oRHxUg7AL84PXeKvJwoXm1CGwcC_m5mFGMENbwt0GznIANAexPur1jEKI4DpV_T1bHo-HvFcUYHC6BH_0cILfLwNPpSSWFhPE57Ojfq7ASneTHyXf-cNCGl1sNWCbOy6Nwyi6g-JlxUCYK5XFX-wTlaR_4kL0X7-iMLUi_GlLmi2waQ9DTPT6H9_xTWP_CE3_qyXlnwFNB7UB1jbGrh3e4kqIJd5WUpug_EOdqG6kpd41XPwBFlN3a4bz0_zvTWwakXfdc6wM"/>
+</div>
+<div class="absolute -bottom-2 -right-2 bg-tertiary text-on-tertiary-container px-2 py-1 rounded-lg font-mono text-[10px] font-bold shadow-lg">VERIFIED</div>
+</div>
+<div class="flex-1 space-y-4">
+<div class="space-y-1">
+<div class="flex flex-wrap items-center gap-4">
+<h1 class="text-4xl md:text-5xl font-black tracking-tight text-white">Alex Rivers</h1>
+<div class="flex items-center gap-2 px-3 py-1 bg-surface-container-highest/50 rounded-full border border-white/5">
+<span class="material-symbols-outlined text-indigo-400 text-sm">verified_user</span>
+<span class="font-mono text-xs text-indigo-300">0x71C...392D</span>
+</div>
+</div>
+<p class="text-xl text-on-surface-variant font-medium">Full-Stack Web3 Architect &amp; UI/UX Designer</p>
+</div>
+<p class="max-w-2xl text-on-surface-variant leading-relaxed">
+              Curating digital experiences at the intersection of decentralization and high-end aesthetics. Specialized in React, Solidity, and Kinetic UI systems. Building the future of the open web, one block at a time.
+            </p>
+<div class="flex flex-wrap gap-2 pt-2">
+<span class="px-3 py-1 bg-indigo-500/10 text-indigo-300 text-xs font-bold rounded-full border border-indigo-500/20">Solidity</span>
+<span class="px-3 py-1 bg-indigo-500/10 text-indigo-300 text-xs font-bold rounded-full border border-indigo-500/20">React Native</span>
+<span class="px-3 py-1 bg-indigo-500/10 text-indigo-300 text-xs font-bold rounded-full border border-indigo-500/20">UI/UX</span>
+<span class="px-3 py-1 bg-indigo-500/10 text-indigo-300 text-xs font-bold rounded-full border border-indigo-500/20">Ethers.js</span>
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-xs font-bold rounded-full">+12 more</span>
+</div>
+</div>
+<div class="w-full md:w-auto flex flex-col gap-3">
+<div class="glass-card p-4 rounded-xl flex items-center justify-between gap-8">
+<div>
+<p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Total Earnings</p>
+<p class="text-2xl font-mono font-bold text-white">42.8 ETH</p>
+</div>
+<div class="text-right">
+<p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Rating</p>
+<div class="flex items-center gap-1 text-tertiary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-mono font-bold">4.9</span>
+</div>
+</div>
+</div>
+<button class="w-full premium-gradient text-white font-bold py-3 rounded-xl active:scale-95 transition-all">Hire Alex</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Portfolio Grid Header -->
+<section class="max-w-6xl mx-auto mb-8 flex items-center justify-between">
+<div class="space-y-1">
+<h2 class="text-2xl font-bold text-white tracking-tight">Project Portfolio</h2>
+<p class="text-on-surface-variant text-sm">A curated selection of smart contracts and interfaces.</p>
+</div>
+<button class="flex items-center gap-2 px-5 py-2.5 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-all group">
+<span class="material-symbols-outlined text-indigo-400 group-hover:rotate-90 transition-transform">add</span>
+<span class="text-sm font-bold text-white">Add Project</span>
+</button>
+</section>
+<!-- Bento Grid Portfolio -->
+<section class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Project Card 1 (Large) -->
+<div class="md:col-span-8 group relative overflow-hidden rounded-2xl glass-card transition-all hover:translate-y-[-4px]">
+<div class="h-64 md:h-80 w-full overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="abstract digital 3D visualization of blockchain data nodes with glowing blue and violet light trails on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDBN7Gb90wKGetXlgnka6KpNtws--3Km4kSVxfIwZXam0DsQXufhITld81q08saqM0xYz1H2paBwwVF0qPBOBnaLtc8qX0w1oARY3asGrYDQwh_X2xCNEsbNIBkh0N2lxxMhBMfLh4uR5jWlYjUwAcYMXBIKFM5oyP3djPP1hXtkr4jDbL8wcG34CfqGw1fG_DtvhmVnezTXSaADRlfoAx8xLj7UE7B3yG6Rl5NAfKNyug2rOUhZ-_7tBFKwTWXUaLF0PTtDaRMos"/>
+</div>
+<div class="p-6 space-y-4">
+<div class="flex justify-between items-start">
+<div class="space-y-1">
+<h3 class="text-2xl font-bold text-white group-hover:text-indigo-300 transition-colors">EtherFlow DEX Interface</h3>
+<p class="text-on-surface-variant text-sm max-w-xl">A complete overhaul of the EtherFlow decentralized exchange, focusing on reducing transaction friction and enhancing liquidity pool visualization.</p>
+</div>
+<a class="p-2 bg-indigo-500/20 text-indigo-300 rounded-lg hover:bg-indigo-500/40 transition-colors" href="#">
+<span class="material-symbols-outlined">open_in_new</span>
+</a>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-0.5 bg-surface-container-lowest text-[10px] font-mono text-tertiary rounded border border-tertiary/20">LIVE</span>
+<span class="px-2 py-0.5 bg-surface-container-lowest text-[10px] font-mono text-on-surface-variant rounded border border-outline-variant/30">React</span>
+<span class="px-2 py-0.5 bg-surface-container-lowest text-[10px] font-mono text-on-surface-variant rounded border border-outline-variant/30">Tailwind</span>
+<span class="px-2 py-0.5 bg-surface-container-lowest text-[10px] font-mono text-on-surface-variant rounded border border-outline-variant/30">Web3.js</span>
+</div>
+</div>
+</div>
+<!-- Project Card 2 (Small) -->
+<div class="md:col-span-4 group relative overflow-hidden rounded-2xl glass-card transition-all hover:translate-y-[-4px]">
+<div class="h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="vibrant neon geometric shapes floating in a dark ethereal space with soft violet gradients and grain texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEmlbaDg9ZPdtUbjRabbm3Jd2bjb4s4nQLdh7hDq1CfQp_Q9JMdch_0GEwppORFnOqlMBcyyxY8TrzjtnTXUNYI4IsbPzTyG1bAgXxyAfSD-iObS7fqiug2zCBKidy2GobeS0Y2WM2TJiUMOyLphSCEXKHfFGNFCLTaiVhyGpgOU8D2lNAw_jqrXGMNK9y0gw2wal2b47e16zXT7M1MmP14bB6EHInzsa0P7fl8_Yw1FyfbtvHXVUDQYLmng8ft_H_UMSJ2801qAQ"/>
+</div>
+<div class="p-6 space-y-4">
+<div class="space-y-1">
+<h3 class="text-xl font-bold text-white group-hover:text-indigo-300 transition-colors">Nebula NFT Mint</h3>
+<p class="text-on-surface-variant text-xs">High-performance minting engine for a 10k collection on Polygon.</p>
+</div>
+<div class="flex flex-wrap gap-2 pt-2">
+<span class="px-2 py-0.5 bg-surface-container-lowest text-[10px] font-mono text-on-surface-variant rounded border border-outline-variant/30">Solidity</span>
+<span class="px-2 py-0.5 bg-surface-container-lowest text-[10px] font-mono text-on-surface-variant rounded border border-outline-variant/30">Hardhat</span>
+</div>
+</div>
+</div>
+<!-- Project Card 3 (Small) -->
+<div class="md:col-span-4 group relative overflow-hidden rounded-2xl glass-card transition-all hover:translate-y-[-4px]">
+<div class="h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="close-up of a high-tech metallic circuit board with glowing golden paths and futuristic electronic components" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvWIu3knSfy-n2V4MtU1rIgm-911TrzzkVpn7270jQp9c-5H_bfuFjp8Cfk6AfautEZqKsTiWNk-nalDagBwd85UlEPLUvSzKbW8YidefjzMFGEuHiVrpIxbyQ2d7zOBVikFsaWKbwWCuC386eTYzuSGV2vlvfaGRHtk85VTxIxvO7kvzUcD0RAHiVRDqqx26rfwYhu96vSx_YeRUZypI6yfrODXcVWIhTY2u9Q9awtbPHzz9MY_kJzM-E371REyXHFYClq0GEo6w"/>
+</div>
+<div class="p-6 space-y-4">
+<div class="space-y-1">
+<h3 class="text-xl font-bold text-white group-hover:text-indigo-300 transition-colors">DAO Governance Bot</h3>
+<p class="text-on-surface-variant text-xs">Discord automation for snapshot voting and proposal alerts.</p>
+</div>
+<div class="flex flex-wrap gap-2 pt-2">
+<span class="px-2 py-0.5 bg-surface-container-lowest text-[10px] font-mono text-on-surface-variant rounded border border-outline-variant/30">Node.js</span>
+<span class="px-2 py-0.5 bg-surface-container-lowest text-[10px] font-mono text-on-surface-variant rounded border border-outline-variant/30">Ethers</span>
+</div>
+</div>
+</div>
+<!-- Project Card 4 (Medium) -->
+<div class="md:col-span-8 group relative overflow-hidden rounded-2xl glass-card transition-all hover:translate-y-[-4px]">
+<div class="flex flex-col md:flex-row h-full">
+<div class="md:w-1/2 overflow-hidden h-64 md:h-full">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="minimalist abstract composition with fluid organic shapes in deep blue and iridescent pearl textures" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAomowD3M_J1s5BSrcQo00K700_UwzriJt7fI9lFK3TCooNZ1bhWZiddS2iCVnUOVEI2KjBBlNLWXJu2i83REqfDeNsrZOWL3IvNVo7aSA0YYoDHMeFMe19J_n_c2dA1_UsQ9-f0Fdmgj52YbwGC6CUBRxHzojaNS5kLaad1NUOzqn-X3phY9b79-pHiJVAhookEsGvh_N6l4ZSW8PtLSTKoFGSmBBEfgwwXJcU9mH1hZeWsA3RJixpY36buo477asDF2R1bOC9fAw"/>
+</div>
+<div class="md:w-1/2 p-8 flex flex-col justify-center space-y-4">
+<div class="space-y-2">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_#d9b9ff]"></span>
+<span class="text-[10px] font-mono text-secondary uppercase tracking-widest font-bold">Featured Project</span>
+</div>
+<h3 class="text-2xl font-bold text-white group-hover:text-indigo-300 transition-colors">Pulse Analytics</h3>
+<p class="text-on-surface-variant text-sm">A real-time on-chain data visualizer for whale wallet tracking and token flow analysis. Custom D3.js implementation for dynamic graphing.</p>
+</div>
+<div class="flex gap-4 pt-4">
+<button class="flex-1 bg-surface-container-highest text-white py-2 rounded-xl text-xs font-bold hover:bg-indigo-500/20 transition-all border border-white/5">View Case Study</button>
+<button class="p-2 border border-white/10 rounded-xl hover:bg-white/5">
+<span class="material-symbols-outlined text-white">code</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Tech Stack / Experience Section -->
+<section class="max-w-6xl mx-auto mt-24">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="space-y-6">
+<h4 class="text-xs uppercase tracking-[0.2em] text-indigo-400 font-bold">Core Mastery</h4>
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="text-white font-medium">Smart Contracts</span>
+<span class="font-mono text-indigo-300">95%</span>
+</div>
+<div class="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-indigo-500 w-[95%]"></div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-white font-medium">Frontend Dev</span>
+<span class="font-mono text-indigo-300">90%</span>
+</div>
+<div class="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-indigo-500 w-[90%]"></div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-white font-medium">System Design</span>
+<span class="font-mono text-indigo-300">85%</span>
+</div>
+<div class="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-indigo-500 w-[85%]"></div>
+</div>
+</div>
+</div>
+<div class="space-y-6 md:col-span-2">
+<h4 class="text-xs uppercase tracking-[0.2em] text-indigo-400 font-bold">Recent Achievements</h4>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="glass-card p-4 rounded-xl flex items-start gap-4">
+<div class="p-2 bg-tertiary/10 text-tertiary rounded-lg">
+<span class="material-symbols-outlined">emoji_events</span>
+</div>
+<div>
+<p class="text-white font-bold text-sm">ETHGlobal Finalist</p>
+<p class="text-on-surface-variant text-xs">2023 - Paris Hackathon</p>
+</div>
+</div>
+<div class="glass-card p-4 rounded-xl flex items-start gap-4">
+<div class="p-2 bg-indigo-400/10 text-indigo-300 rounded-lg">
+<span class="material-symbols-outlined">history_edu</span>
+</div>
+<div>
+<p class="text-white font-bold text-sm">Audited 12+ Protocols</p>
+<p class="text-on-surface-variant text-xs">Zero critical exploits found post-audit.</p>
+</div>
+</div>
+<div class="glass-card p-4 rounded-xl flex items-start gap-4">
+<div class="p-2 bg-purple-400/10 text-purple-300 rounded-lg">
+<span class="material-symbols-outlined">group</span>
+</div>
+<div>
+<p class="text-white font-bold text-sm">Open Source Lead</p>
+<p class="text-on-surface-variant text-xs">Contributor to Ethers.js &amp; Wagmi</p>
+</div>
+</div>
+<div class="glass-card p-4 rounded-xl flex items-start gap-4">
+<div class="p-2 bg-secondary/10 text-secondary rounded-lg">
+<span class="material-symbols-outlined">rocket_launch</span>
+</div>
+<div>
+<p class="text-white font-bold text-sm">50+ Projects Shipped</p>
+<p class="text-on-surface-variant text-xs">Successful launches across 4 chains.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer Space -->
+<footer class="mt-32 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-on-surface-variant text-xs font-mono">
+<div class="flex items-center gap-6">
+<span>© 2024 CHAINWORK PROTOCOL</span>
+<a class="hover:text-white transition-colors" href="#">PRIVACY</a>
+<a class="hover:text-white transition-colors" href="#">TERMS</a>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<span>NETWORK STATUS: OPTIMAL</span>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined cursor-pointer hover:text-indigo-400">terminal</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-indigo-400">language</span>
+</div>
+</div>
+</footer>
+</main>
+<!-- Mobile Bottom Nav from JSON Context -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface-container/80 backdrop-blur-xl border-t border-white/5 flex justify-around items-center py-4 px-2 z-50">
+<a class="flex flex-col items-center gap-1 text-indigo-400" href="#">
+<span class="material-symbols-outlined">folder_shared</span>
+<span class="text-[10px] font-bold">Portfolio</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">work</span>
+<span class="text-[10px]">Jobs</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">chat</span>
+<span class="text-[10px]">Chat</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px]">Settings</span>
+</a>
+</nav>
+</body></html>

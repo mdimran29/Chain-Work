@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;family=Berkeley+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-variant": "#343536",
+              "on-background": "#e3e2e3",
+              "on-surface-variant": "#c7c4d7",
+              "tertiary": "#4edea3",
+              "on-tertiary-fixed-variant": "#005236",
+              "secondary-fixed-dim": "#d9b9ff",
+              "primary-fixed-dim": "#c0c1ff",
+              "primary-fixed": "#e1e0ff",
+              "secondary": "#d9b9ff",
+              "on-surface": "#e3e2e3",
+              "tertiary-fixed-dim": "#4edea3",
+              "outline": "#908fa0",
+              "on-primary-container": "#0d0096",
+              "inverse-surface": "#e3e2e3",
+              "on-tertiary-container": "#000703",
+              "on-secondary-fixed": "#290054",
+              "background": "#121315",
+              "on-secondary-fixed-variant": "#6300bb",
+              "on-primary": "#1000a9",
+              "on-tertiary": "#003824",
+              "on-error-container": "#ffdad6",
+              "on-secondary-container": "#cea7ff",
+              "on-secondary": "#450086",
+              "surface-container-lowest": "#0d0e0f",
+              "surface-bright": "#38393a",
+              "tertiary-container": "#00885d",
+              "surface-container-low": "#1b1c1d",
+              "surface-tint": "#c0c1ff",
+              "primary-container": "#8083ff",
+              "inverse-on-surface": "#303032",
+              "surface-container": "#1f2021",
+              "error": "#ffb4ab",
+              "surface-container-high": "#292a2b",
+              "tertiary-fixed": "#6ffbbe",
+              "on-error": "#690005",
+              "error-container": "#93000a",
+              "surface-container-highest": "#343536",
+              "surface": "#121315",
+              "primary": "#c0c1ff",
+              "secondary-fixed": "#eedcff",
+              "on-tertiary-fixed": "#002113",
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"],
+              "mono": ["Berkeley Mono"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      body {
+        background-color: #121315;
+        color: #e3e2e3;
+        font-family: 'Inter', sans-serif;
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        vertical-align: middle;
+      }
+      .glass-card {
+        background: rgba(52, 53, 54, 0.6);
+        backdrop-filter: blur(20px);
+      }
+      .gradient-text {
+        background: linear-gradient(135deg, #c0c1ff 0%, #6600c0 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/60 backdrop-blur-xl border-b border-white/10 shadow-[0_0_40px_rgba(99,102,241,0.04)] flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-purple-600">ChainWork</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-4 py-1.5 rounded-lg bg-surface-container-highest text-slate-400 font-medium text-sm hover:text-white transition-all">Ethereum</button>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-400 cursor-pointer hover:text-white">notifications</span>
+<button class="bg-primary-container text-on-primary-container px-4 py-1.5 rounded-lg font-bold text-sm hover:opacity-90 active:scale-95 transition-all">Connect Wallet</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-white/10">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="Stylized 3D avatar of a digital professional with purple accents and a clean minimalist background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwVu9YMvoPV7yj4fW5ceUjbKksJTTr4EPCjp43gDqqeJej3Ntuqbpa_Z7Mr2H5qmB-mKUgYArwxleifO-xUqNQqCcbi6AKC1kt6TaZks2MIKZBvmytcyFXkYWmMJENeAYRZ-MArxuYyeqjKIlcUa2fmq1f9SrH7o3HsrFu5I25Vu7DInCveqvEdBNXq_fNHCWIrXo9M9pUyrNKaCwNLdtVZYFjwjLh9nER2K-7_XzQ9zqNvPobWyx8ZthDojOPf0Xveqzp2rNnw9w"/>
+</div>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 bg-slate-900/50 backdrop-blur-lg border-r border-white/5 flex flex-col py-6 gap-2">
+<div class="px-6 mb-6">
+<h2 class="text-xl font-bold text-white">ChainWork</h2>
+<p class="text-xs text-slate-400 font-medium">The Digital Curator</p>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-slate-200 hover:bg-white/5 rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="work">work</span>
+<span class="text-sm font-medium">Jobs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-slate-200 hover:bg-white/5 rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+<span class="text-sm font-medium">Marketplace</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-slate-200 hover:bg-white/5 rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+<span class="text-sm font-medium">Messages</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-white bg-indigo-500/10 border-r-2 border-indigo-500 rounded-l-xl transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-sm font-bold">Reviews</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-slate-200 hover:bg-white/5 rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="text-sm font-medium">Transactions</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-slate-200 hover:bg-white/5 rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="folder_shared">folder_shared</span>
+<span class="text-sm font-medium">Portfolio</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-slate-200 hover:bg-white/5 rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="px-4 mt-auto border-t border-white/5 pt-4">
+<button class="w-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 py-3 rounded-xl font-bold text-sm mb-4 hover:bg-indigo-500/20 transition-all">Post a Job</button>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-400 hover:text-slate-200 text-sm transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span>Help Center</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-400 hover:text-slate-200 text-sm transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Log Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 mt-16 p-10 max-w-7xl mx-auto">
+<!-- Header Section -->
+<header class="mb-12">
+<h1 class="text-5xl font-black tracking-tight mb-2">Reputation <span class="gradient-text">Protocol</span></h1>
+<p class="text-on-surface-variant text-lg">Verified chain-of-trust reviews and marketplace performance data.</p>
+</header>
+<!-- Summary Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+<!-- Main Score Card -->
+<div class="md:col-span-2 glass-card rounded-2xl p-8 flex items-center justify-between relative overflow-hidden group">
+<div class="absolute -right-12 -top-12 w-64 h-64 bg-primary/5 rounded-full blur-3xl transition-all group-hover:bg-primary/10"></div>
+<div class="relative z-10">
+<p class="text-sm font-bold text-primary tracking-widest uppercase mb-4">Average Rating</p>
+<div class="flex items-end gap-3">
+<span class="text-7xl font-black leading-none">4.9</span>
+<div class="flex flex-col mb-1">
+<div class="flex text-primary">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 0.5;">star_half</span>
+</div>
+<span class="text-on-surface-variant text-sm font-medium mt-1">Based on 124 verified jobs</span>
+</div>
+</div>
+</div>
+<div class="text-right relative z-10 hidden sm:block">
+<div class="mb-2">
+<span class="text-xs font-mono text-tertiary bg-tertiary/10 px-2 py-1 rounded">PLATINUM TIER</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="h-1.5 w-32 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[92%]"></div>
+</div>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-tighter">92nd Percentile</p>
+</div>
+</div>
+</div>
+<!-- Reputation Score Card -->
+<div class="glass-card rounded-2xl p-8 flex flex-col justify-center border border-primary/10">
+<p class="text-sm font-bold text-on-surface-variant tracking-widest uppercase mb-2">Trust Score</p>
+<div class="flex items-baseline gap-2">
+<span class="text-5xl font-black text-white">998</span>
+<span class="text-tertiary text-sm font-mono">+12%</span>
+</div>
+<p class="text-xs text-on-surface-variant mt-4 leading-relaxed">
+                    Calculation based on wallet age, transaction volume, and dispute-free history.
+                </p>
+</div>
+</section>
+<!-- Filters & Sort -->
+<div class="flex flex-col sm:flex-row justify-between items-center gap-4 mb-8">
+<div class="flex gap-2">
+<button class="bg-surface-container-highest text-white px-4 py-2 rounded-xl text-sm font-bold border border-white/5">All Reviews</button>
+<button class="bg-transparent text-on-surface-variant px-4 py-2 rounded-xl text-sm font-medium hover:bg-white/5 transition-all">Latest</button>
+<button class="bg-transparent text-on-surface-variant px-4 py-2 rounded-xl text-sm font-medium hover:bg-white/5 transition-all">Highest Rated</button>
+</div>
+<div class="relative w-full sm:w-auto">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-xl">search</span>
+<input class="w-full sm:w-64 bg-surface-container-lowest border-none rounded-xl pl-10 pr-4 py-2 text-sm focus:ring-1 focus:ring-primary/30" placeholder="Search reviews..." type="text"/>
+</div>
+</div>
+<!-- Reviews List -->
+<div class="space-y-4">
+<!-- Review Item 1 -->
+<div class="glass-card rounded-2xl p-6 transition-all hover:bg-surface-container/80 group">
+<div class="flex flex-col md:flex-row justify-between gap-6">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-2">
+<h3 class="text-lg font-bold text-white">Smart Contract Architect for DeFi Protocol</h3>
+<span class="text-[10px] font-mono text-primary bg-primary/10 px-2 py-0.5 rounded border border-primary/20">FIXED PRICE</span>
+</div>
+<div class="flex items-center gap-4 mb-4">
+<div class="flex text-primary">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="text-xs text-on-surface-variant font-mono">24 Oct 2023</span>
+</div>
+<p class="text-on-surface-variant leading-relaxed text-sm max-w-3xl">
+                            "Absolutely exceptional work on the liquidity pools. Code was gas-optimized beyond my expectations and the documentation was institutional grade. Highly recommended for any complex EVM-based architecture projects. A true professional."
+                        </p>
+</div>
+<div class="flex flex-row md:flex-col items-center md:items-end justify-between md:justify-start gap-4">
+<div class="flex items-center gap-3">
+<div class="text-right">
+<p class="text-sm font-bold text-white">VortexDAO.eth</p>
+<p class="text-[10px] font-mono text-on-surface-variant">0x71C...4921</p>
+</div>
+<img alt="Reviewer Avatar" class="w-10 h-10 rounded-xl bg-surface-container-highest p-1" data-alt="Abstract geometric identicon icon with cyan and purple patterns on a dark gray background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPBF0pA-X_iipQtb-S_UG5d8yTUjwYYXtRYu2nsiT5jCSXDwN1bB0bZqjXkG9AHwqqXbP7nrK2dMhl-GmoG69Z_qD6_-twlMp6mBevRztrXQ3p19pP6SJ9v4zX638vmnKE6LB7kDI769_ew3beESasYtqFp8vWAdHeeixZUiVyYf8H4I9RCjO1amSR5xjB4wpulWesov8Agj8cMMkDD9pl5qR83qFy7diW8_AKcsNfpZ4w7ekf48s_k71R37cUCk246_30nU_bOGw"/>
+</div>
+<button class="flex items-center gap-1 text-[10px] font-bold text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">verified</span>
+                            VIEW TRANSACTION
+                        </button>
+</div>
+</div>
+</div>
+<!-- Review Item 2 -->
+<div class="glass-card rounded-2xl p-6 transition-all hover:bg-surface-container/80 group">
+<div class="flex flex-col md:flex-row justify-between gap-6">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-2">
+<h3 class="text-lg font-bold text-white">Full Stack Web3 Integration (Next.js &amp; Wagmi)</h3>
+<span class="text-[10px] font-mono text-secondary bg-secondary/10 px-2 py-0.5 rounded border border-secondary/20">MILESTONE</span>
+</div>
+<div class="flex items-center gap-4 mb-4">
+<div class="flex text-primary">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 0;">star</span>
+</div>
+<span class="text-xs text-on-surface-variant font-mono">12 Sep 2023</span>
+</div>
+<p class="text-on-surface-variant leading-relaxed text-sm max-w-3xl">
+                            "Fast delivery and great communication. The frontend is beautiful and hooks into the protocol perfectly. Had a minor issue with the mobile responsive menu but it was fixed within an hour of reporting. Will definitely hire again."
+                        </p>
+</div>
+<div class="flex flex-row md:flex-col items-center md:items-end justify-between md:justify-start gap-4">
+<div class="flex items-center gap-3">
+<div class="text-right">
+<p class="text-sm font-bold text-white">NeonPixels_Labs</p>
+<p class="text-[10px] font-mono text-on-surface-variant">0x3A2...F912</p>
+</div>
+<img alt="Reviewer Avatar" class="w-10 h-10 rounded-xl bg-surface-container-highest p-1" data-alt="Cyberpunk style identicon with neon pink and electric blue shapes on a deep obsidian base" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDaLiZxipRjhDuqKDL5XXyKLpSeLxGXyl2ngrAB5sc0Cg0y4uZ6Mj-cZgf65InLvZSLPqlHMn-I2M7eEmRkUwn2Co5khXZ8xryHwunva7HTMaAvYlsscfrM5Hg9xizy-WQ8BNYcG2_e1j9CLU-WS9FVSiSBz61LH2F0S3ojOD9bWr3t-a0ruO_iCTx27CdOp1dItWGVFVJvKfoMm843XaXIEi2z9Gx29yJgv_uZjWmdkwzJcbW6TjBQcltv1Rs-XqowdAoDbcKdao"/>
+</div>
+<button class="flex items-center gap-1 text-[10px] font-bold text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">verified</span>
+                            VIEW TRANSACTION
+                        </button>
+</div>
+</div>
+</div>
+<!-- Review Item 3 -->
+<div class="glass-card rounded-2xl p-6 transition-all hover:bg-surface-container/80 group">
+<div class="flex flex-col md:flex-row justify-between gap-6">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-2">
+<h3 class="text-lg font-bold text-white">NFT Collection Smart Contract &amp; Minting Site</h3>
+<span class="text-[10px] font-mono text-tertiary bg-tertiary/10 px-2 py-0.5 rounded border border-tertiary/20">RECURRING</span>
+</div>
+<div class="flex items-center gap-4 mb-4">
+<div class="flex text-primary">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="text-xs text-on-surface-variant font-mono">30 Aug 2023</span>
+</div>
+<p class="text-on-surface-variant leading-relaxed text-sm max-w-3xl">
+                            "The best developer I've worked with on ChainWork. Handled the ERC-721A implementation flawlessly. The reveal mechanism was perfectly coded and secure. 10/10 service."
+                        </p>
+</div>
+<div class="flex flex-row md:flex-col items-center md:items-end justify-between md:justify-start gap-4">
+<div class="flex items-center gap-3">
+<div class="text-right">
+<p class="text-sm font-bold text-white">ArtBlock_Master</p>
+<p class="text-[10px] font-mono text-on-surface-variant">0x9E2...D331</p>
+</div>
+<img alt="Reviewer Avatar" class="w-10 h-10 rounded-xl bg-surface-container-highest p-1" data-alt="Minimalist identicon with soft pastel green and yellow geometric tiles against a dark surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaiS10cNtOPAD-IrYGcs-NexfR6j6cPgOX-BKBAArAPU70qiSqJuMR4b6LPgvQ_xJWSPCYaS7yW88AfNYn5tpoivZVfhZWpbhsJvCHW1NWEL1rx7iyeCiGWIRceDWomykBrvR_S08vO1MMMZlGAPX-P5F6JAgIvL6BUCyDKRJomDzFjuUSjWitlrdQbK0b43ZDLe7vgBAmU9sdL7sf7OrMVvRSqkVhnpdADeLkBmZErxp5WK_3UxbNEpKs_hESQYlV_CewkQgoDlI"/>
+</div>
+<button class="flex items-center gap-1 text-[10px] font-bold text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">verified</span>
+                            VIEW TRANSACTION
+                        </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Load More -->
+<div class="mt-12 text-center">
+<button class="px-8 py-3 rounded-xl border border-white/10 text-on-surface-variant font-bold text-sm hover:bg-white/5 hover:text-white transition-all">Load More Reviews</button>
+</div>
+</main>
+<!-- Footer Space -->
+<footer class="ml-64 p-10 mt-10 border-t border-white/5">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<p class="text-xs text-on-surface-variant font-mono">© 2024 ChainWork Protocol. Powered by decentralized reputation.</p>
+<div class="flex gap-6">
+<a class="text-xs text-on-surface-variant hover:text-white transition-colors" href="#">Documentation</a>
+<a class="text-xs text-on-surface-variant hover:text-white transition-colors" href="#">Privacy Node</a>
+<a class="text-xs text-on-surface-variant hover:text-white transition-colors" href="#">Terms of Service</a>
+</div>
+</div>
+</footer>
+</body></html>

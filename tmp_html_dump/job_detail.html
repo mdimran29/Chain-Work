@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ChainWork | Fullstack Rust/Solana Developer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Berkeley+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .mono { font-family: 'Berkeley Mono', monospace; }
+        body { font-family: 'Inter', sans-serif; background-color: #121315; color: #e3e2e3; }
+        .glass-panel {
+            background: rgba(52, 53, 54, 0.6);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "on-secondary-container": "#cea7ff",
+                "outline-variant": "#464554",
+                "outline": "#908fa0",
+                "tertiary": "#4edea3",
+                "secondary-fixed-dim": "#d9b9ff",
+                "surface-container-lowest": "#0d0e0f",
+                "on-tertiary-fixed-variant": "#005236",
+                "on-surface-variant": "#c7c4d7",
+                "on-primary-fixed": "#07006c",
+                "surface-dim": "#121315",
+                "on-tertiary": "#003824",
+                "primary-fixed-dim": "#c0c1ff",
+                "primary-container": "#8083ff",
+                "on-error": "#690005",
+                "inverse-surface": "#e3e2e3",
+                "on-background": "#e3e2e3",
+                "secondary-fixed": "#eedcff",
+                "inverse-on-surface": "#303032",
+                "surface-container-low": "#1b1c1d",
+                "surface-bright": "#38393a",
+                "primary-fixed": "#e1e0ff",
+                "on-tertiary-fixed": "#002113",
+                "tertiary-fixed": "#6ffbbe",
+                "secondary": "#d9b9ff",
+                "on-secondary-fixed": "#290054",
+                "tertiary-fixed-dim": "#4edea3",
+                "surface-container": "#1f2021",
+                "background": "#121315",
+                "error": "#ffb4ab",
+                "on-primary-fixed-variant": "#2f2ebe",
+                "surface-container-highest": "#343536",
+                "inverse-primary": "#494bd6",
+                "primary": "#c0c1ff",
+                "surface-variant": "#343536",
+                "on-surface": "#e3e2e3",
+                "error-container": "#93000a",
+                "surface": "#121315",
+                "on-error-container": "#ffdad6",
+                "on-tertiary-container": "#000703",
+                "secondary-container": "#6600c0",
+                "on-secondary": "#450086",
+                "surface-container-high": "#292a2b",
+                "on-secondary-fixed-variant": "#6300bb",
+                "tertiary-container": "#00885d",
+                "surface-tint": "#c0c1ff",
+                "on-primary-container": "#0d0096",
+                "on-primary": "#1000a9"
+              },
+              fontFamily: {
+                "headline": ["Inter"],
+                "body": ["Inter"],
+                "label": ["Inter"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1.5rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-surface overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-slate-900/60 backdrop-blur-xl border-b border-white/10 flex items-center justify-between px-6 py-3 w-full shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black tracking-tighter text-white bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-600">ChainWork</span>
+<div class="hidden md:flex gap-6 items-center font-sans font-medium tracking-tight text-sm">
+<a class="text-indigo-400 border-b-2 border-indigo-400 pb-1" href="#">Jobs</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Marketplace</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-white/5 p-2 rounded-xl transition-all">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-white/5 p-2 rounded-xl transition-all">account_balance_wallet</button>
+<button class="bg-gradient-to-r from-primary to-secondary-container text-on-primary font-bold px-6 py-2 rounded-xl scale-95 active:scale-90 transition-all">Connect Wallet</button>
+</div>
+</nav>
+<!-- SideNavBar (Desktop Only) -->
+<aside class="hidden lg:flex h-screen w-64 fixed left-0 top-0 pt-20 flex-col gap-2 p-4 border-r border-outline-variant/10">
+<div class="flex items-center gap-3 p-4 mb-6 surface-container-low rounded-2xl">
+<img alt="User Profile" class="w-10 h-10 rounded-full" data-alt="close-up portrait of a tech professional in a modern office setting with soft blue lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmzXc3lcbv_vya6fX0Op9y8HfB_ARiKzFU080HdHZaWmWnxACokc-LsA6RCKA1aeajJCs8JKbF-jONaGEMn_gUNOEobKtoTbQrdyWm8algMPySsHoIprI5m_amDnMi16hZSqiDicQ9E2tKpkIufInhZHpH0tdo-g7xWFbG4XvEWU8BytFofM86zrfDrSDUA95LGo3mDGpeP6eFb1RPXzGuAksjQedDrLy0uFEczw7AfXsIlv9p8WiOvmXKqXX6nR6KxV65YdVyyiQ"/>
+<div class="flex flex-col">
+<span class="font-sans text-sm font-semibold tracking-wide text-on-surface">Freelancer Dashboard</span>
+<span class="mono text-[10px] text-outline">0x71C...8e4f</span>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 p-3 bg-indigo-500/10 text-indigo-400 rounded-xl transition-all duration-300" href="#">
+<span class="material-symbols-outlined">work</span>
+<span class="font-sans text-sm font-semibold">Jobs</span>
+</a>
+<a class="flex items-center gap-3 p-3 text-slate-500 hover:text-slate-200 hover:bg-slate-800/50 rounded-xl transition-all duration-300" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-sans text-sm font-semibold">My Contracts</span>
+</a>
+<a class="flex items-center gap-3 p-3 text-slate-500 hover:text-slate-200 hover:bg-slate-800/50 rounded-xl transition-all duration-300" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-sans text-sm font-semibold">Earnings</span>
+</a>
+<a class="flex items-center gap-3 p-3 text-slate-500 hover:text-slate-200 hover:bg-slate-800/50 rounded-xl transition-all duration-300" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-sans text-sm font-semibold">Settings</span>
+</a>
+</nav>
+<button class="mt-auto bg-primary-container/20 text-primary border border-primary/20 p-3 rounded-xl font-bold hover:bg-primary-container/30 transition-all">
+            Post a Job
+        </button>
+</aside>
+<!-- Main Content Area -->
+<main class="lg:pl-64 pt-24 pb-12 px-6 min-h-screen">
+<div class="max-w-7xl mx-auto grid grid-cols-1 xl:grid-cols-12 gap-8 items-start">
+<!-- Left Column: Job Info -->
+<div class="xl:col-span-8 space-y-8">
+<section class="space-y-4">
+<div class="flex items-center gap-3">
+<span class="bg-tertiary/10 text-tertiary text-[10px] mono px-2 py-1 rounded-full uppercase tracking-widest font-bold">Open for Proposals</span>
+</div>
+<h1 class="text-4xl md:text-5xl font-extrabold tracking-tighter text-on-surface leading-tight">
+                        Fullstack Rust/Solana Developer
+                    </h1>
+<div class="flex items-center gap-4 text-on-surface-variant text-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+<span class="mono text-xs">0xAb...123</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">schedule</span>
+<span>Posted 2 hours ago</span>
+</div>
+</div>
+</section>
+<!-- Tags Area -->
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 rounded-full bg-surface-container-highest text-primary-fixed-dim text-xs font-semibold border border-outline-variant/20">Solana</span>
+<span class="px-3 py-1.5 rounded-full bg-surface-container-highest text-primary-fixed-dim text-xs font-semibold border border-outline-variant/20">Rust</span>
+<span class="px-3 py-1.5 rounded-full bg-surface-container-highest text-primary-fixed-dim text-xs font-semibold border border-outline-variant/20">Web3</span>
+<span class="px-3 py-1.5 rounded-full bg-surface-container-highest text-primary-fixed-dim text-xs font-semibold border border-outline-variant/20">Smart Contracts</span>
+</div>
+<!-- Description -->
+<section class="prose prose-invert max-w-none space-y-6">
+<p class="text-on-surface-variant text-lg leading-relaxed">
+                        We are looking for a senior-level Fullstack Rust developer with deep expertise in the Solana ecosystem. You will be responsible for architecting and implementing high-performance programs (smart contracts) using Anchor and building the corresponding frontend interfaces.
+                    </p>
+<div class="p-6 rounded-2xl surface-container-low border border-outline-variant/10">
+<h3 class="text-on-surface font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary">verified_user</span>
+                            Scope of Work
+                        </h3>
+<ul class="space-y-3 text-on-surface-variant text-sm">
+<li class="flex items-start gap-3">
+<span class="text-primary mt-1">•</span>
+                                Develop secure and audited Solana programs using the Anchor framework.
+                            </li>
+<li class="flex items-start gap-3">
+<span class="text-primary mt-1">•</span>
+                                Optimize gas (compute units) and account management strategies.
+                            </li>
+<li class="flex items-start gap-3">
+<span class="text-primary mt-1">•</span>
+                                Integrate programs with a React/Next.js frontend using @solana/web3.js.
+                            </li>
+</ul>
+</div>
+</section>
+<!-- Proposals Section -->
+<section class="space-y-6 pt-12">
+<div class="flex items-center justify-between">
+<h2 class="text-2xl font-bold text-on-surface tracking-tight">Active Proposals</h2>
+<span class="text-sm text-outline">3 Candidates</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Candidate Card 1 -->
+<div class="surface-container rounded-2xl p-5 border border-outline-variant/5 hover:border-primary/20 transition-all group">
+<div class="flex items-center gap-3 mb-4">
+<img alt="Candidate 1" class="w-12 h-12 rounded-xl object-cover" data-alt="professional developer portrait, focused expression, high-end studio lighting, soft bokeh background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqDpBT-nQQ-eaigyhPNuFyjcBMx2fFSA466YqPE3dognKJ6EKIj7__YKUF2G9rpdK_ctJwuVFUVPS_qjBhzOEw-AHlooTLY_l6G6oH1ia_Uh0VuHmrvu5-9rUv2rURySghQDuwmLyYjVt1r5pynP9VTUd8nwLDdz8ONanwlo3BbllCxwjJCLPqO-9ucMhJ1iUcf9UhM-wBHYMEx_9buRdlcJnXSpjXgVYJWnl5Xlj9P49mVWNiF1kYZN9bRn1WYa3DUFzl_zOIejM"/>
+<div>
+<h4 class="font-bold text-on-surface text-sm">Alex R.</h4>
+<span class="text-tertiary text-xs mono">Top Rated</span>
+</div>
+</div>
+<p class="text-xs text-on-surface-variant mb-4 line-clamp-2">5+ years Rust experience. Lead dev at XYZ Protocol...</p>
+<div class="flex items-center justify-between">
+<span class="mono text-xs font-bold">$12,000</span>
+<button class="text-primary text-[11px] font-bold uppercase tracking-wider group-hover:underline">View Profile</button>
+</div>
+</div>
+<!-- Candidate Card 2 -->
+<div class="surface-container rounded-2xl p-5 border border-outline-variant/5 hover:border-primary/20 transition-all group">
+<div class="flex items-center gap-3 mb-4">
+<img alt="Candidate 2" class="w-12 h-12 rounded-xl object-cover" data-alt="young developer with glasses smiling, bright creative workspace background, warm natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9ChXyHBqBjAdSiwSNl32aqQMBDWbct6dQmZKiD-uV1gQlMTOT2_5cAtYdA_6nTL3PwUudXhWXuQ3wK-_3PUlTycxo3VqsjhPchpssVNdDIESfpM-1KyBj0aQOWjPRAEvPAnr8KnJ_EDvw0tquKBQFixFsGtj9X33EtLDtuzNTfqmYOybksOtrc0Ou2UjP_L-2cBDRMoGyd4_4XIckpYePsDT3RnnL6QKnwW9R7FPZnJW3to6SuJhMN7-Ul4F8_vEpEjG1LV3IGuo"/>
+<div>
+<h4 class="font-bold text-on-surface text-sm">Elena K.</h4>
+<span class="text-primary text-xs mono">Anchor Expert</span>
+</div>
+</div>
+<p class="text-xs text-on-surface-variant mb-4 line-clamp-2">Contributed to Solana Core. Expert in parallelization...</p>
+<div class="flex items-center justify-between">
+<span class="mono text-xs font-bold">$15,500</span>
+<button class="text-primary text-[11px] font-bold uppercase tracking-wider group-hover:underline">View Profile</button>
+</div>
+</div>
+<!-- Candidate Card 3 -->
+<div class="surface-container rounded-2xl p-5 border border-outline-variant/5 hover:border-primary/20 transition-all group">
+<div class="flex items-center gap-3 mb-4">
+<img alt="Candidate 3" class="w-12 h-12 rounded-xl object-cover" data-alt="modern tech professional portrait, minimalist background, professional look, soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfh0LXJTUFQp3Fp3JyCtxEG7LD8Oxl8CvfcPwpPgL_y5mwDrB-mNuxGQWzJCWgSih4kGK3HsrA8rYY2kunS_tWxGv8R7kC_M_rXuO6_eZMP985nja2-Aa3mbgwbfKlsMp3BSxZDfJM7h2qg_TgJgX6dgjyaxW6qoYbbrkzAZaOlTCBE8XYDk84w-CErOuz-AHHDUoP0TYuhGd0dt--VKqfNMPFhUsY16584rZzxuy9nX29nMUR_mKmRhcpbt4zg2_h7NgTqlRN5d0"/>
+<div>
+<h4 class="font-bold text-on-surface text-sm">Jordan M.</h4>
+<span class="text-outline text-xs mono">Rising Star</span>
+</div>
+</div>
+<p class="text-xs text-on-surface-variant mb-4 line-clamp-2">Fullstack master. React + Rust combo for 3 years...</p>
+<div class="flex items-center justify-between">
+<span class="mono text-xs font-bold">$10,000</span>
+<button class="text-primary text-[11px] font-bold uppercase tracking-wider group-hover:underline">View Profile</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Contract Panel -->
+<div class="xl:col-span-4 sticky top-24">
+<div class="glass-panel p-8 rounded-2xl border border-outline-variant/10 shadow-2xl space-y-8">
+<div class="flex items-center justify-between">
+<h2 class="text-xl font-bold tracking-tight">Contract Panel</h2>
+<div class="flex items-center gap-2 bg-[#14F195]/10 px-3 py-1 rounded-full border border-[#14F195]/20">
+<div class="w-2 h-2 rounded-full bg-[#14F195] animate-pulse"></div>
+<span class="text-[10px] font-bold text-[#14F195] uppercase tracking-widest">Solana</span>
+</div>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] uppercase font-bold text-outline tracking-widest">Escrow Status</label>
+<div class="flex items-center gap-3">
+<span class="text-3xl font-black text-tertiary">Funded</span>
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<div class="p-5 surface-container-lowest rounded-2xl border border-outline-variant/5 space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-sm text-on-surface-variant">Contract Value</span>
+<span class="mono text-lg font-bold text-on-surface">45.00 SOL</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm text-on-surface-variant">Platform Fee (2%)</span>
+<span class="mono text-sm text-on-surface-variant">0.90 SOL</span>
+</div>
+<div class="pt-4 border-t border-outline-variant/10 flex justify-between items-center">
+<span class="text-sm font-bold text-on-surface">Total Release</span>
+<span class="mono text-xl font-black text-primary">44.10 SOL</span>
+</div>
+</div>
+<div class="space-y-3">
+<button class="w-full bg-gradient-to-r from-tertiary to-[#00885d] text-on-tertiary font-bold py-4 rounded-xl shadow-lg shadow-tertiary/10 active:scale-[0.98] transition-transform">
+                            Release Payment
+                        </button>
+<button class="w-full border border-outline text-on-surface-variant font-bold py-4 rounded-xl hover:bg-white/5 active:scale-[0.98] transition-transform">
+                            Request Refund
+                        </button>
+</div>
+<div class="pt-4 space-y-4">
+<div class="flex flex-col gap-1">
+<span class="text-[10px] uppercase font-bold text-outline tracking-widest">Transaction Hash</span>
+<a class="mono text-xs text-primary hover:underline truncate" href="#">0xabc71c8e4f1234567890abcdef1234567890def</a>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-[10px] uppercase font-bold text-outline tracking-widest">Network Speed</span>
+<div class="flex items-center gap-2">
+<span class="text-xs text-on-surface-variant">~2,400 TPS</span>
+<div class="h-1 flex-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-3/4 rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Real-time Chat Snippet -->
+<div class="fixed bottom-6 right-6 z-50">
+<div class="w-80 glass-panel rounded-2xl border border-outline-variant/20 shadow-2xl flex flex-col overflow-hidden">
+<div class="bg-surface-container-high p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img alt="Chat partner" class="w-8 h-8 rounded-full border border-primary/20" data-alt="close-up avatar of a person, warm lighting, blurred office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQPrwBl1voEgP-NGrqKHu32qpeYfQD4V3qAMiFqdjGHSmLFN5vc6WwrjiD47GUELKIuXmWfKyybtI8wZaD98oA9aBVqSewzp-ZXnxOQ6kBxN3VG4d9t3_8d5ZQyI2QiWi3Cm76JcSwI8u2YS9El53yww7DbpdfcfnH68RE_9tShkAEX1DyEcqClpgRcYWVR5kML7CpP8FBC0hDiVX5_GwIiQlZXriCeDw8PelsszTNWLUJhVE73E2uxoeHyoXiK58zKwZNtzKNtRc"/>
+<div class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-tertiary rounded-full border-2 border-surface-container-high"></div>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-on-surface">Alex R.</span>
+<span class="text-[10px] text-tertiary">Online</span>
+</div>
+</div>
+<button class="material-symbols-outlined text-outline hover:text-on-surface">close</button>
+</div>
+<div class="h-48 overflow-y-auto p-4 space-y-3">
+<div class="flex flex-col items-start gap-1">
+<div class="bg-surface-container-highest p-3 rounded-2xl rounded-tl-none text-xs text-on-surface-variant max-w-[85%]">
+                        Hey! I just submitted the code for the first milestone on GitHub. Can you take a look?
+                    </div>
+<span class="text-[9px] text-outline ml-1">10:42 AM</span>
+</div>
+<div class="flex flex-col items-end gap-1">
+<div class="bg-primary/20 p-3 rounded-2xl rounded-tr-none text-xs text-on-surface max-w-[85%]">
+                        Perfect, I'm checking it now. The transaction is funded!
+                    </div>
+<span class="text-[9px] text-outline mr-1">10:45 AM</span>
+</div>
+</div>
+<div class="p-3 border-t border-outline-variant/10">
+<div class="relative flex items-center">
+<input class="w-full bg-surface-container-lowest border-none text-xs py-2.5 pl-4 pr-10 rounded-xl focus:ring-1 focus:ring-primary/30" placeholder="Type a message..." type="text"/>
+<button class="absolute right-2 material-symbols-outlined text-primary text-lg">send</button>
+</div>
+</div>
+</div>
+</div>
+</body></html>

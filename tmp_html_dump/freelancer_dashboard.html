@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;family=Berkeley+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-container": "#cea7ff",
+              "outline-variant": "#464554",
+              "outline": "#908fa0",
+              "tertiary": "#4edea3",
+              "secondary-fixed-dim": "#d9b9ff",
+              "surface-container-lowest": "#0d0e0f",
+              "on-tertiary-fixed-variant": "#005236",
+              "on-surface-variant": "#c7c4d7",
+              "on-primary-fixed": "#07006c",
+              "surface-dim": "#121315",
+              "on-tertiary": "#003824",
+              "primary-fixed-dim": "#c0c1ff",
+              "primary-container": "#8083ff",
+              "on-error": "#690005",
+              "inverse-surface": "#e3e2e3",
+              "on-background": "#e3e2e3",
+              "secondary-fixed": "#eedcff",
+              "inverse-on-surface": "#303032",
+              "surface-container-low": "#1b1c1d",
+              "surface-bright": "#38393a",
+              "primary-fixed": "#e1e0ff",
+              "on-tertiary-fixed": "#002113",
+              "tertiary-fixed": "#6ffbbe",
+              "secondary": "#d9b9ff",
+              "on-secondary-fixed": "#290054",
+              "tertiary-fixed-dim": "#4edea3",
+              "surface-container": "#1f2021",
+              "background": "#121315",
+              "error": "#ffb4ab",
+              "on-primary-fixed-variant": "#2f2ebe",
+              "surface-container-highest": "#343536",
+              "inverse-primary": "#494bd6",
+              "primary": "#c0c1ff",
+              "surface-variant": "#343536",
+              "on-surface": "#e3e2e3",
+              "error-container": "#93000a",
+              "surface": "#121315",
+              "on-error-container": "#ffdad6",
+              "on-tertiary-container": "#000703",
+              "secondary-container": "#6600c0",
+              "on-secondary": "#450086",
+              "surface-container-high": "#292a2b",
+              "on-secondary-fixed-variant": "#6300bb",
+              "tertiary-container": "#00885d",
+              "surface-tint": "#c0c1ff",
+              "on-primary-container": "#0d0096",
+              "on-primary": "#1000a9"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"],
+              "mono": ["Berkeley Mono"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(31, 32, 33, 0.6);
+            backdrop-filter: blur(20px);
+        }
+        .premium-gradient {
+            background: linear-gradient(135deg, #c0c1ff 0%, #6600c0 100%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary/30">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 flex items-center justify-between px-6 py-3 bg-slate-900/60 backdrop-blur-xl border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black tracking-tighter text-white bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-600">ChainWork</span>
+<div class="hidden md:flex items-center gap-6 font-sans font-medium tracking-tight text-sm">
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Jobs</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Marketplace</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center bg-surface-container-lowest px-4 py-2 rounded-full gap-2 border border-outline-variant/20">
+<span class="material-symbols-outlined text-outline text-sm">search</span>
+<input class="bg-transparent border-none text-xs focus:ring-0 w-48 text-on-surface-variant" placeholder="Search gigs..." type="text"/>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 text-slate-400 hover:bg-white/5 rounded-full transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-slate-400 hover:bg-white/5 rounded-full transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+</button>
+<button class="premium-gradient text-on-primary font-bold px-5 py-2 rounded-xl text-sm scale-95 active:scale-90 transition-all">
+                    Connect Wallet
+                </button>
+</div>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 pt-20 bg-slate-900 dark:bg-[#121315] border-r border-white/5 z-40 hidden md:block">
+<div class="flex flex-col gap-2 p-4 font-sans text-sm font-semibold tracking-wide h-full">
+<div class="flex items-center gap-3 px-3 py-4 mb-4 bg-slate-800/50 rounded-2xl">
+<img alt="User avatar" class="w-10 h-10 rounded-full object-cover" data-alt="Close-up professional headshot of a developer with a neutral background, soft cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-fqrfwxJLqUVSXGOBAkJG6jybpw5w4oMki62a4QAtyj7Y0XVUvLXPNKBtiVRNSas-kPn_ylUZgZFu9tYhTUt061hdp-wbLaaoKDSH18VAINKoUJMTEo_OJdfRXaiHv3lyIWs3SZiQIZVqdlHiLDXTJ61RrLP0NHzLmyd8fdm2JjHvFhSrhIuzc03fB84u6pzM5OtJiGFiVYFCAoERyuOMcN1WMzJqyt_0o1XxtQWMQFIkE23boX87-I6SUNO8C7imSpYIIL2St10"/>
+<div class="overflow-hidden">
+<p class="text-white truncate">Freelancer Dashboard</p>
+<p class="text-[10px] font-mono text-indigo-400 opacity-80">0x71C...8e4f</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 bg-indigo-500/10 text-indigo-400 rounded-xl transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="work">work</span>
+<span>Jobs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-200 hover:bg-slate-800/50 rounded-xl transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span>My Contracts</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-200 hover:bg-slate-800/50 rounded-xl transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span>Earnings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-200 hover:bg-slate-800/50 rounded-xl transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="mt-auto pb-4">
+<button class="w-full flex items-center justify-center gap-2 py-4 border border-indigo-400/30 text-indigo-400 rounded-xl hover:bg-indigo-400/5 transition-all font-bold">
+<span class="material-symbols-outlined text-sm">add</span>
+                    Post a Job
+                </button>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 pt-24 px-6 pb-12 min-h-screen">
+<div class="max-w-7xl mx-auto space-y-10">
+<!-- Header Section -->
+<header class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div class="space-y-1">
+<h1 class="text-4xl font-extrabold tracking-tight text-white font-headline">Welcome back, Curator</h1>
+<p class="text-on-surface-variant text-lg">Your Web3 professional ecosystem at a glance.</p>
+</div>
+<div class="flex items-center gap-2 text-tertiary text-sm font-medium bg-tertiary/5 px-4 py-2 rounded-full border border-tertiary/10">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+                    Connected to Ethereum Mainnet
+                </div>
+</header>
+<!-- Stats Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Stat Card: Earnings -->
+<div class="glass-card p-8 rounded-2xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+</div>
+<p class="text-on-surface-variant font-medium mb-2">Total Earnings</p>
+<h2 class="text-4xl font-mono font-bold text-white tracking-tight">$12,450.00</h2>
+<div class="mt-4 flex items-center gap-2 text-tertiary text-sm">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>+12.5% this month</span>
+</div>
+</div>
+<!-- Stat Card: Active Contracts -->
+<div class="bg-surface-container-low p-8 rounded-2xl border border-outline-variant/10">
+<p class="text-on-surface-variant font-medium mb-2">Active Contracts</p>
+<h2 class="text-4xl font-mono font-bold text-white tracking-tight">08</h2>
+<div class="mt-4 flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-primary/20 flex items-center justify-center text-[10px] font-bold">DA</div>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-secondary/20 flex items-center justify-center text-[10px] font-bold">OP</div>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-tertiary/20 flex items-center justify-center text-[10px] font-bold">WS</div>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-surface-container-highest flex items-center justify-center text-[10px] font-bold">+5</div>
+</div>
+</div>
+<!-- Stat Card: Jobs Applied -->
+<div class="bg-surface-container-low p-8 rounded-2xl border border-outline-variant/10">
+<p class="text-on-surface-variant font-medium mb-2">Jobs Applied</p>
+<h2 class="text-4xl font-mono font-bold text-white tracking-tight">24</h2>
+<div class="mt-4 w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-2/3"></div>
+</div>
+<p class="mt-2 text-xs text-on-surface-variant">Top 5% of applicants in Solidity</p>
+</div>
+</section>
+<!-- Bottom Content: Job Feed & Proposals -->
+<section class="grid grid-cols-1 lg:grid-cols-5 gap-10 items-start">
+<!-- Recent Job Feed (Col 1-3) -->
+<div class="lg:col-span-3 space-y-6">
+<div class="flex items-center justify-between">
+<h3 class="text-xl font-bold text-white">Recommended for You</h3>
+<button class="text-primary text-sm font-semibold hover:underline transition-all">View All</button>
+</div>
+<div class="space-y-4">
+<!-- Job Item 1 -->
+<div class="surface-container p-6 rounded-2xl border border-outline-variant/5 hover:border-primary/20 transition-all duration-300 group">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-surface-container-highest flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-2xl">terminal</span>
+</div>
+<div>
+<h4 class="text-white font-bold text-lg">Senior Solidity Auditor</h4>
+<p class="text-on-surface-variant text-sm">Nexus Protocol • 2 hours ago</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-white font-mono font-bold">4.5 ETH</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest">Fixed Budget</p>
+</div>
+</div>
+<p class="text-on-surface-variant text-sm line-clamp-2 mb-4 leading-relaxed">
+                                Reviewing complex DeFi logic across 12 smart contracts. Expertise in gas optimization and reentrancy protection required...
+                            </p>
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-3 py-1 bg-surface-container-highest text-primary text-[10px] font-bold rounded-lg uppercase tracking-wider">Security</span>
+<span class="px-3 py-1 bg-surface-container-highest text-primary text-[10px] font-bold rounded-lg uppercase tracking-wider">Auditing</span>
+<div class="ml-auto flex items-center gap-2 px-3 py-1 bg-indigo-500/10 rounded-full border border-indigo-500/20">
+<span class="w-2 h-2 rounded-full bg-[#627EEA]"></span>
+<span class="text-[10px] text-indigo-300 font-mono">Ethereum</span>
+</div>
+</div>
+</div>
+<!-- Job Item 2 -->
+<div class="surface-container p-6 rounded-2xl border border-outline-variant/5 hover:border-primary/20 transition-all duration-300 group">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-surface-container-highest flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-2xl">palette</span>
+</div>
+<div>
+<h4 class="text-white font-bold text-lg">Generative Art UI/UX</h4>
+<p class="text-on-surface-variant text-sm">ArtBlocks Curator • 5 hours ago</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-white font-mono font-bold">$120/hr</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest">Hourly Rate</p>
+</div>
+</div>
+<p class="text-on-surface-variant text-sm line-clamp-2 mb-4 leading-relaxed">
+                                Designing a high-fidelity interface for minting generative artworks. Focus on dark mode aesthetics and real-time visualization...
+                            </p>
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-3 py-1 bg-surface-container-highest text-primary text-[10px] font-bold rounded-lg uppercase tracking-wider">Design</span>
+<span class="px-3 py-1 bg-surface-container-highest text-primary text-[10px] font-bold rounded-lg uppercase tracking-wider">React</span>
+<div class="ml-auto flex items-center gap-2 px-3 py-1 bg-purple-500/10 rounded-full border border-purple-500/20">
+<span class="w-2 h-2 rounded-full bg-[#8247E5]"></span>
+<span class="text-[10px] text-purple-300 font-mono">Polygon</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- My Proposals (Col 4-5) -->
+<div class="lg:col-span-2 space-y-6">
+<h3 class="text-xl font-bold text-white">Active Proposals</h3>
+<div class="bg-surface-container-low rounded-2xl overflow-hidden border border-outline-variant/5">
+<div class="p-4 bg-surface-container-high/50 text-[10px] uppercase tracking-widest font-bold text-outline-variant flex justify-between">
+<span>Project</span>
+<span>Status / Bid</span>
+</div>
+<div class="divide-y divide-outline-variant/10">
+<!-- Proposal Item -->
+<div class="p-5 flex justify-between items-center hover:bg-white/[0.02] transition-colors">
+<div class="space-y-1">
+<p class="text-white font-medium text-sm">Governance Dashboard</p>
+<p class="text-on-surface-variant text-xs">Snapshot.org</p>
+</div>
+<div class="text-right space-y-1">
+<span class="px-2 py-0.5 bg-yellow-500/10 text-yellow-500 text-[10px] font-bold rounded-full border border-yellow-500/20 uppercase">Pending</span>
+<p class="text-white font-mono text-xs">$3,500</p>
+</div>
+</div>
+<!-- Proposal Item -->
+<div class="p-5 flex justify-between items-center hover:bg-white/[0.02] transition-colors">
+<div class="space-y-1">
+<p class="text-white font-medium text-sm">ZK-Rollup Bridge</p>
+<p class="text-on-surface-variant text-xs">StarkWare Ecosystem</p>
+</div>
+<div class="text-right space-y-1">
+<span class="px-2 py-0.5 bg-tertiary/10 text-tertiary text-[10px] font-bold rounded-full border border-tertiary/20 uppercase">Accepted</span>
+<p class="text-white font-mono text-xs">8.0 ETH</p>
+</div>
+</div>
+<!-- Proposal Item -->
+<div class="p-5 flex justify-between items-center hover:bg-white/[0.02] transition-colors">
+<div class="space-y-1">
+<p class="text-white font-medium text-sm">NFT Staking Logic</p>
+<p class="text-on-surface-variant text-xs">Cool Cats Studio</p>
+</div>
+<div class="text-right space-y-1">
+<span class="px-2 py-0.5 bg-yellow-500/10 text-yellow-500 text-[10px] font-bold rounded-full border border-yellow-500/20 uppercase">Pending</span>
+<p class="text-white font-mono text-xs">$2,200</p>
+</div>
+</div>
+</div>
+<button class="w-full py-4 text-xs font-bold text-on-surface-variant hover:text-white hover:bg-white/5 transition-all">View All Proposals</button>
+</div>
+<!-- Profile Performance Snippet -->
+<div class="p-6 rounded-2xl bg-gradient-to-br from-primary-container/20 to-secondary-container/20 border border-primary/10">
+<h4 class="text-white font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">auto_awesome</span>
+                            Profile Strength
+                        </h4>
+<div class="flex items-center gap-4 mb-6">
+<div class="relative w-16 h-16">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<path class="text-surface-container-highest" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="transparent" stroke="currentColor" stroke-width="3"></path>
+<path class="text-primary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="transparent" stroke="currentColor" stroke-dasharray="85, 100" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center text-xs font-mono font-bold text-white">85%</div>
+</div>
+<div class="flex-1">
+<p class="text-xs text-on-surface-variant leading-relaxed">Add a video introduction to reach the "Elite" tier and unlock lower platform fees.</p>
+</div>
+</div>
+<button class="w-full py-3 bg-white/5 hover:bg-white/10 text-white rounded-xl text-xs font-bold transition-all border border-white/5">Update Profile</button>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Mobile Navigation Suppressed as per Task (Dashboard uses Desktop Sidebar by default) -->
+</body></html>

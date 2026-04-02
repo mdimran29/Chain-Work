@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ChainWork Settings | The Digital Curator</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;family=Berkeley+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-variant": "#343536",
+              "on-background": "#e3e2e3",
+              "on-surface-variant": "#c7c4d7",
+              "tertiary": "#4edea3",
+              "on-tertiary-fixed-variant": "#005236",
+              "secondary-fixed-dim": "#d9b9ff",
+              "primary-fixed-dim": "#c0c1ff",
+              "primary-fixed": "#e1e0ff",
+              "secondary": "#d9b9ff",
+              "on-surface": "#e3e2e3",
+              "tertiary-fixed-dim": "#4edea3",
+              "outline": "#908fa0",
+              "on-primary-container": "#0d0096",
+              "inverse-surface": "#e3e2e3",
+              "on-tertiary-container": "#000703",
+              "on-secondary-fixed": "#290054",
+              "background": "#121315",
+              "on-secondary-fixed-variant": "#6300bb",
+              "on-primary": "#1000a9",
+              "on-tertiary": "#003824",
+              "on-error-container": "#ffdad6",
+              "on-secondary-container": "#cea7ff",
+              "on-secondary": "#450086",
+              "surface-container-lowest": "#0d0e0f",
+              "surface-bright": "#38393a",
+              "tertiary-container": "#00885d",
+              "surface-container-low": "#1b1c1d",
+              "surface-tint": "#c0c1ff",
+              "primary-container": "#8083ff",
+              "inverse-on-surface": "#303032",
+              "surface-container": "#1f2021",
+              "error": "#ffb4ab",
+              "surface-dim": "#121315",
+              "secondary-container": "#6600c0",
+              "on-primary-fixed": "#07006c",
+              "outline-variant": "#464554",
+              "inverse-primary": "#494bd6",
+              "on-primary-fixed-variant": "#2f2ebe",
+              "on-tertiary-fixed": "#002113",
+              "surface-container-highest": "#343536",
+              "surface": "#121315",
+              "primary": "#c0c1ff",
+              "secondary-fixed": "#eedcff",
+              "surface-container-high": "#292a2b",
+              "tertiary-fixed": "#6ffbbe",
+              "on-error": "#690005",
+              "error-container": "#93000a"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"],
+              "mono": ["Berkeley Mono"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(52, 53, 54, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(192, 193, 255, 0.08);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-glow {
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body min-h-screen">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/60 backdrop-blur-xl border-b border-white/10 shadow-[0_0_40px_rgba(99,102,241,0.04)] flex justify-between items-center px-6 h-16 w-full font-sans text-sm tracking-tight">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-purple-600">ChainWork</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/5">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+<span class="font-mono text-xs text-on-surface-variant">Ethereum</span>
+</div>
+<button class="bg-gradient-to-r from-indigo-300 to-purple-600 text-on-primary-container px-4 py-2 rounded-xl font-bold active:scale-95 duration-200">Connect Wallet</button>
+<div class="flex items-center gap-3 ml-2">
+<span class="material-symbols-outlined text-slate-400 hover:text-white cursor-pointer transition-colors" data-icon="notifications">notifications</span>
+<img alt="User Avatar" class="w-8 h-8 rounded-full border border-indigo-500/30" data-alt="close up avatar of a professional digital worker with clean features and modern glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwzuO4kjdFbvkbMB58ds5IJA94hT-gjqoyGtqP3tvcudrQWcazqUD0s5JdI4GgTUbDrYvs5R4L3WohGzSOuJbdyHMOZyAQAqCcuST660zOmLZdhJMs5bVq5Yg7pV1busnz7DAZfU_wcQQzYc6zpCsCHPfQtHvmrehNyHMCtXhwEdTe3DizBI-numKnaBbGZbZvmgXB44XRiUkt-GHPT7ipTUmsj5Io_ZZrtrX0sJujfHQCjGpdVvipfYloIgNu3u8V7MP1SEs-QD4"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar (Suppressed for Focus Journey but maintained per user intent for Settings Navigation) -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 bg-slate-900/50 backdrop-blur-lg border-r border-white/5 flex flex-col py-6 gap-2 font-sans text-sm font-medium hidden md:flex">
+<div class="px-6 mb-6">
+<h2 class="text-white font-bold text-lg">Settings</h2>
+<p class="text-on-surface-variant text-xs">Manage your digital identity</p>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:text-slate-200 hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="work">work</span> Jobs
+            </a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:text-slate-200 hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span> Marketplace
+            </a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:text-slate-200 hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="chat">chat</span> Messages
+            </a>
+<a class="flex items-center gap-3 px-6 py-3 text-white bg-indigo-500/10 border-r-2 border-indigo-500 transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span> Settings
+            </a>
+</nav>
+<div class="mt-auto px-6 space-y-4">
+<div class="p-4 rounded-2xl bg-gradient-to-br from-indigo-500/10 to-purple-500/10 border border-indigo-500/20">
+<p class="text-xs text-indigo-300 font-bold mb-2">PRO PLAN</p>
+<p class="text-[10px] text-slate-400 leading-tight">Unlock premium curation tools and 0% gas fees on platform swaps.</p>
+</div>
+<button class="flex items-center gap-3 text-slate-400 hover:text-white transition-colors py-2">
+<span class="material-symbols-outlined" data-icon="logout">logout</span> Log Out
+            </button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="md:ml-64 pt-24 pb-12 px-4 md:px-12">
+<div class="max-w-5xl mx-auto">
+<header class="mb-12">
+<h1 class="text-4xl font-black tracking-tight mb-2 text-white">The Curator's Command</h1>
+<p class="text-on-surface-variant text-lg">Adjust your presence in the digital ether.</p>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Vertical Tabs for Mobile/Sub-Nav -->
+<div class="lg:col-span-3 space-y-2">
+<button class="w-full flex items-center gap-3 px-5 py-4 rounded-2xl bg-indigo-500/10 text-white font-bold border border-indigo-500/20 text-left transition-all active-glow">
+<span class="material-symbols-outlined text-indigo-400" data-icon="person">person</span> Profile
+                    </button>
+<button class="w-full flex items-center gap-3 px-5 py-4 rounded-2xl hover:bg-white/5 text-on-surface-variant text-left transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span> Notifications
+                    </button>
+<button class="w-full flex items-center gap-3 px-5 py-4 rounded-2xl hover:bg-white/5 text-on-surface-variant text-left transition-all">
+<span class="material-symbols-outlined" data-icon="security">security</span> Security
+                    </button>
+<button class="w-full flex items-center gap-3 px-5 py-4 rounded-2xl hover:bg-white/5 text-on-surface-variant text-left transition-all">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span> Wallet
+                    </button>
+<button class="w-full flex items-center gap-3 px-5 py-4 rounded-2xl hover:bg-white/5 text-on-surface-variant text-left transition-all">
+<span class="material-symbols-outlined" data-icon="tune">tune</span> Preferences
+                    </button>
+</div>
+<!-- Settings Canvas -->
+<div class="lg:col-span-9 space-y-10">
+<!-- Profile Section -->
+<section class="glass-panel p-8 rounded-2xl shadow-xl">
+<div class="flex flex-col md:flex-row gap-8 items-start mb-10">
+<div class="relative group">
+<img alt="User Avatar" class="w-32 h-32 rounded-3xl object-cover border-4 border-white/5" data-alt="professional portrait of a creative professional, high resolution, soft studio lighting, futuristic aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_pgbW_1FXdfS84sPoIcTzmvYyuDkPrfM-IocWfNYM0o-XBSnwZ7qMGUXr0K7QS4Ja9yhutc7QdneKDjAlLxrPhv0fptCmEqfJH8PKsCDH8I80JbdLqRDVwlcEkneBZ9XP8UhTHmQMiaPzKeR7LHQDQr6z5zNvWTFNlHamO-XQ4TuKk5B7ZG2VC8Dg4hjSMfiBKEW4TdzIEKbLxfH8xNH8rEMEZRqhkXLzYVC6888hL0pMMAvoIbNAFPQqFv6x3sby0szUrPqZgsM"/>
+<div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 rounded-3xl flex items-center justify-center transition-all cursor-pointer">
+<span class="material-symbols-outlined text-white" data-icon="photo_camera">photo_camera</span>
+</div>
+</div>
+<div class="flex-1 space-y-4 w-full">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="text-xs font-bold text-indigo-400 uppercase tracking-widest">Display Name</label>
+<input class="w-full bg-surface-container-lowest border-none rounded-xl py-3 px-4 text-on-surface focus:ring-2 focus:ring-indigo-500/50" type="text" value="Felix Curator"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-indigo-400 uppercase tracking-widest">Role Identity</label>
+<div class="flex bg-surface-container-lowest p-1 rounded-xl">
+<button class="flex-1 py-2 px-3 rounded-lg bg-indigo-500 text-on-primary-container text-xs font-bold transition-all">Freelancer</button>
+<button class="flex-1 py-2 px-3 rounded-lg text-on-surface-variant text-xs font-bold hover:text-white transition-all">Client</button>
+</div>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-indigo-400 uppercase tracking-widest">Bio</label>
+<textarea class="w-full bg-surface-container-lowest border-none rounded-xl py-3 px-4 text-on-surface focus:ring-2 focus:ring-indigo-500/50 resize-none" rows="3">Architecting decentralized experiences in the Kinetic Ether. Specialist in Smart Contract Design and Editorial UI.</textarea>
+</div>
+</div>
+</div>
+</section>
+<!-- Notifications & Wallet Grid (Asymmetric) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Notifications -->
+<section class="glass-panel p-8 rounded-2xl">
+<h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-indigo-400" data-icon="notifications">notifications</span>
+                                Connectivity
+                            </h3>
+<div class="space-y-6">
+<div class="flex items-center justify-between">
+<div>
+<p class="font-medium">Email Alerts</p>
+<p class="text-xs text-on-surface-variant">Job invites and contract updates</p>
+</div>
+<button class="w-12 h-6 rounded-full bg-indigo-500 relative transition-all">
+<span class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></span>
+</button>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<p class="font-medium">Push Notifications</p>
+<p class="text-xs text-on-surface-variant">Real-time message pings</p>
+</div>
+<button class="w-12 h-6 rounded-full bg-surface-container-highest relative transition-all">
+<span class="absolute left-1 top-1 w-4 h-4 bg-slate-400 rounded-full"></span>
+</button>
+</div>
+</div>
+</section>
+<!-- Theme Toggle -->
+<section class="glass-panel p-8 rounded-2xl flex flex-col justify-center">
+<h3 class="text-xl font-bold mb-4">Interface Lume</h3>
+<p class="text-on-surface-variant text-sm mb-6">Switch between the deep void and the bright canvas.</p>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex flex-col items-center gap-3 p-4 rounded-xl border-2 border-indigo-500 bg-indigo-500/10">
+<span class="material-symbols-outlined" data-icon="dark_mode">dark_mode</span>
+<span class="text-xs font-bold uppercase tracking-widest">Obsidian</span>
+</button>
+<button class="flex flex-col items-center gap-3 p-4 rounded-xl border-2 border-transparent bg-surface-container-lowest hover:border-white/10 transition-all">
+<span class="material-symbols-outlined" data-icon="light_mode">light_mode</span>
+<span class="text-xs font-bold uppercase tracking-widest">Prism</span>
+</button>
+</div>
+</section>
+</div>
+<!-- Wallet Management -->
+<section class="glass-panel p-8 rounded-2xl">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-xl font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-indigo-400" data-icon="account_balance_wallet">account_balance_wallet</span>
+                                Vault Management
+                            </h3>
+<button class="text-indigo-400 text-sm font-bold hover:underline">+ Link New Wallet</button>
+</div>
+<div class="space-y-4">
+<!-- Wallet Item -->
+<div class="flex items-center justify-between p-5 rounded-2xl bg-surface-container-lowest border border-white/5">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-blue-400" data-icon="account_balance">account_balance</span>
+</div>
+<div>
+<p class="font-mono text-sm">0x71C...4f21</p>
+<div class="flex items-center gap-2">
+<span class="text-[10px] text-on-surface-variant font-bold uppercase tracking-widest">MetaMask</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] bg-tertiary/10 text-tertiary font-bold">PRIMARY</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<p class="font-mono text-indigo-300 font-bold">2.45 ETH</p>
+<button class="p-2 hover:bg-white/5 rounded-lg text-error transition-all">
+<span class="material-symbols-outlined" data-icon="link_off">link_off</span>
+</button>
+</div>
+</div>
+<!-- Wallet Item 2 -->
+<div class="flex items-center justify-between p-5 rounded-2xl bg-surface-container-lowest border border-white/5 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-purple-400" data-icon="account_balance">account_balance</span>
+</div>
+<div>
+<p class="font-mono text-sm">0x99a...e210</p>
+<span class="text-[10px] text-on-surface-variant font-bold uppercase tracking-widest">Phantom (Solana)</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<p class="font-mono text-indigo-300 font-bold">12.0 SOL</p>
+<button class="p-2 hover:bg-white/5 rounded-lg text-error transition-all">
+<span class="material-symbols-outlined" data-icon="link_off">link_off</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Save Action -->
+<div class="flex items-center justify-end gap-4 pb-12">
+<button class="px-8 py-3 rounded-xl font-bold text-on-surface-variant hover:text-white transition-all">Discard Changes</button>
+<button class="px-10 py-3 rounded-xl bg-gradient-to-r from-indigo-300 to-purple-600 text-on-primary-container font-black shadow-lg shadow-indigo-500/20 hover:scale-[1.02] active:scale-95 transition-all">Save Curator Identity</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Success Toast (Visual Reference) -->
+<div class="fixed bottom-8 left-1/2 -translate-x-1/2 z-[60] flex items-center gap-3 px-6 py-4 rounded-2xl glass-panel shadow-2xl border-indigo-500/30 opacity-0 pointer-events-none">
+<span class="material-symbols-outlined text-tertiary" data-icon="check_circle">check_circle</span>
+<p class="text-sm font-bold">Identity parameters updated successfully</p>
+</div>
+</body></html>
