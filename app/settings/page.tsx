@@ -6,6 +6,12 @@ import { Toast } from '../components/ui/Toast';
 
 export default function SettingsPage() {
   const [showToast, setShowToast] = useState(false);
+  const [displayName, setDisplayName] = useState("Felix Curator");
+  const [role, setRole] = useState("Freelancer");
+  const [bio, setBio] = useState("Architecting decentralized experiences in the Kinetic Ether. Specialist in Smart Contract Design and Editorial UI.");
+  const [emailAlerts, setEmailAlerts] = useState(true);
+  const [pushNotifications, setPushNotifications] = useState(false);
+  const [theme, setTheme] = useState("Obsidian");
 
   const handleSave = () => {
     setShowToast(true);
@@ -59,27 +65,41 @@ export default function SettingsPage() {
                   <div className="flex-1 space-y-4 w-full">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <label className="text-xs font-bold text-indigo-400 uppercase tracking-widest">Display Name</label>
+                        <label htmlFor="display-name" className="text-xs font-bold text-indigo-400 uppercase tracking-widest">Display Name</label>
                         <input
+                          id="display-name"
                           className="w-full bg-surface-container-lowest border-none rounded-xl py-3 px-4 text-on-surface focus:ring-1 focus:ring-indigo-500/50 outline-none"
                           type="text"
-                          defaultValue="Felix Curator"
+                          value={displayName}
+                          onChange={(e) => setDisplayName(e.target.value)}
                         />
                       </div>
                       <div className="space-y-2">
                         <label className="text-xs font-bold text-indigo-400 uppercase tracking-widest">Role Identity</label>
                         <div className="flex bg-surface-container-lowest p-1 rounded-xl">
-                          <button className="flex-1 py-2 px-3 rounded-lg bg-indigo-500 text-white shadow-lg shadow-indigo-500/20 text-xs font-bold transition-all">Freelancer</button>
-                          <button className="flex-1 py-2 px-3 rounded-lg text-on-surface-variant text-xs font-bold hover:text-white transition-all">Client</button>
+                          <button 
+                            onClick={() => setRole("Freelancer")}
+                            className={`flex-1 py-2 px-3 rounded-lg text-xs font-bold transition-all ${role === 'Freelancer' ? 'bg-indigo-500 text-white shadow-lg shadow-indigo-500/20' : 'text-on-surface-variant hover:text-white'}`}
+                          >
+                            Freelancer
+                          </button>
+                          <button 
+                            onClick={() => setRole("Client")}
+                            className={`flex-1 py-2 px-3 rounded-lg text-xs font-bold transition-all ${role === 'Client' ? 'bg-indigo-500 text-white shadow-lg shadow-indigo-500/20' : 'text-on-surface-variant hover:text-white'}`}
+                          >
+                            Client
+                          </button>
                         </div>
                       </div>
                     </div>
                     <div className="space-y-2">
-                      <label className="text-xs font-bold text-indigo-400 uppercase tracking-widest">Bio</label>
+                      <label htmlFor="bio" className="text-xs font-bold text-indigo-400 uppercase tracking-widest">Bio</label>
                       <textarea
+                        id="bio"
                         className="w-full bg-surface-container-lowest border-none rounded-xl py-3 px-4 text-on-surface focus:ring-1 focus:ring-indigo-500/50 outline-none resize-none"
                         rows={3}
-                        defaultValue="Architecting decentralized experiences in the Kinetic Ether. Specialist in Smart Contract Design and Editorial UI."
+                        value={bio}
+                        onChange={(e) => setBio(e.target.value)}
                       />
                     </div>
                   </div>
@@ -100,8 +120,11 @@ export default function SettingsPage() {
                         <p className="font-medium text-white">Email Alerts</p>
                         <p className="text-xs text-on-surface-variant">Job invites and contract updates</p>
                       </div>
-                      <button className="w-12 h-6 rounded-full bg-indigo-500 relative transition-all">
-                        <span className="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></span>
+                      <button 
+                        onClick={() => setEmailAlerts(!emailAlerts)}
+                        className={`w-12 h-6 rounded-full relative transition-all ${emailAlerts ? 'bg-indigo-500' : 'bg-surface-container-highest'}`}
+                      >
+                        <span className={`absolute top-1 w-4 h-4 rounded-full transition-all ${emailAlerts ? 'right-1 bg-white' : 'left-1 bg-slate-400'}`}></span>
                       </button>
                     </div>
                     <div className="flex items-center justify-between">
@@ -109,8 +132,11 @@ export default function SettingsPage() {
                         <p className="font-medium text-white">Push Notifications</p>
                         <p className="text-xs text-on-surface-variant">Real-time message pings</p>
                       </div>
-                      <button className="w-12 h-6 rounded-full bg-surface-container-highest relative transition-all">
-                        <span className="absolute left-1 top-1 w-4 h-4 bg-slate-400 rounded-full"></span>
+                      <button 
+                        onClick={() => setPushNotifications(!pushNotifications)}
+                        className={`w-12 h-6 rounded-full relative transition-all ${pushNotifications ? 'bg-indigo-500' : 'bg-surface-container-highest'}`}
+                      >
+                        <span className={`absolute top-1 w-4 h-4 rounded-full transition-all ${pushNotifications ? 'right-1 bg-white' : 'left-1 bg-slate-400'}`}></span>
                       </button>
                     </div>
                   </div>
@@ -121,11 +147,17 @@ export default function SettingsPage() {
                   <h3 className="text-xl font-bold mb-4 text-white">Interface Lume</h3>
                   <p className="text-on-surface-variant text-sm mb-6">Switch between the deep void and the bright canvas.</p>
                   <div className="grid grid-cols-2 gap-3">
-                    <button className="flex flex-col items-center gap-3 p-4 rounded-xl border-2 border-indigo-500 bg-indigo-500/10 text-white">
+                    <button 
+                      onClick={() => setTheme("Obsidian")}
+                      className={`flex flex-col items-center gap-3 p-4 rounded-xl border-2 transition-all ${theme === 'Obsidian' ? 'border-indigo-500 bg-indigo-500/10 text-white' : 'border-transparent bg-surface-container-lowest hover:border-white/10 text-on-surface-variant hover:text-white'}`}
+                    >
                       <span className="material-symbols-outlined">dark_mode</span>
                       <span className="text-xs font-bold uppercase tracking-widest">Obsidian</span>
                     </button>
-                    <button className="flex flex-col items-center gap-3 p-4 rounded-xl border-2 border-transparent bg-surface-container-lowest hover:border-white/10 transition-all text-on-surface-variant hover:text-white">
+                    <button 
+                      onClick={() => setTheme("Prism")}
+                      className={`flex flex-col items-center gap-3 p-4 rounded-xl border-2 transition-all ${theme === 'Prism' ? 'border-indigo-500 bg-indigo-500/10 text-white' : 'border-transparent bg-surface-container-lowest hover:border-white/10 text-on-surface-variant hover:text-white'}`}
+                    >
                       <span className="material-symbols-outlined">light_mode</span>
                       <span className="text-xs font-bold uppercase tracking-widest">Prism</span>
                     </button>

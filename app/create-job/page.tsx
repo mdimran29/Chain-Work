@@ -1,4 +1,13 @@
+"use client";
+
+import { useState } from 'react';
+
 export default function CreateJob() {
+  const [title, setTitle] = useState("Senior Smart Contract Auditor");
+  const [description, setDescription] = useState("Looking for a security expert to audit a set of Rust-based Anchor programs for an upcoming DeFi protocol...");
+  const [budget, setBudget] = useState("5200");
+  const [blockchain, setBlockchain] = useState("Solana");
+
   return (
     <main className="pt-28 pb-20 min-h-screen px-6 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
       {/* Left: Multi-Step Flow */}
@@ -19,15 +28,18 @@ export default function CreateJob() {
             </div>
             <div className="space-y-4">
               <div className="group">
-                <label className="block text-xs font-semibold uppercase tracking-widest text-outline mb-2 ml-1">Position Title</label>
+                <label htmlFor="position-title" className="block text-xs font-semibold uppercase tracking-widest text-outline mb-2 ml-1">Position Title</label>
                 <input
+                  id="position-title"
                   className="w-full bg-surface-container-low border-none rounded-2xl py-4 px-5 text-lg focus:ring-2 focus:ring-primary/20 transition-all placeholder:text-outline-variant outline-none"
                   placeholder="e.g. Senior Smart Contract Auditor"
                   type="text"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
                 />
               </div>
               <div className="group">
-                <label className="block text-xs font-semibold uppercase tracking-widest text-outline mb-2 ml-1">Detailed Brief</label>
+                <label htmlFor="detailed-brief" className="block text-xs font-semibold uppercase tracking-widest text-outline mb-2 ml-1">Detailed Brief</label>
                 <div className="bg-surface-container-low rounded-2xl overflow-hidden focus-within:ring-2 focus-within:ring-primary/20 transition-all">
                   <div className="flex gap-4 p-3 border-b border-outline-variant/10 bg-surface-container/50">
                     <button className="material-symbols-outlined text-outline hover:text-on-surface cursor-pointer">format_bold</button>
@@ -36,9 +48,12 @@ export default function CreateJob() {
                     <button className="material-symbols-outlined text-outline hover:text-on-surface cursor-pointer">link</button>
                   </div>
                   <textarea
+                    id="detailed-brief"
                     className="w-full bg-transparent border-none py-4 px-5 focus:ring-0 text-on-surface-variant outline-none resize-y"
                     placeholder="Describe the scope, deliverables, and technical requirements..."
                     rows={6}
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
                   ></textarea>
                 </div>
               </div>
@@ -53,21 +68,24 @@ export default function CreateJob() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="group">
-                <label className="block text-xs font-semibold uppercase tracking-widest text-outline mb-2 ml-1">Fixed Budget (USDC)</label>
+                <label htmlFor="fixed-budget" className="block text-xs font-semibold uppercase tracking-widest text-outline mb-2 ml-1">Fixed Budget (USDC)</label>
                 <div className="relative">
                   <span className="absolute left-5 top-1/2 -translate-y-1/2 font-mono text-outline">$</span>
                   <input
+                    id="fixed-budget"
                     className="w-full bg-surface-container-low border-none rounded-2xl py-4 pl-10 pr-5 text-lg font-mono focus:ring-2 focus:ring-primary/20 transition-all outline-none"
                     placeholder="0.00"
                     type="number"
+                    value={budget}
+                    onChange={(e) => setBudget(e.target.value)}
                   />
                 </div>
               </div>
               <div className="group">
-                <label className="block text-xs font-semibold uppercase tracking-widest text-outline mb-2 ml-1">Timeline</label>
+                <label htmlFor="timeline" className="block text-xs font-semibold uppercase tracking-widest text-outline mb-2 ml-1">Timeline</label>
                 <div className="relative">
                   <span className="material-symbols-outlined absolute left-5 top-1/2 -translate-y-1/2 text-outline">schedule</span>
-                  <select className="w-full bg-surface-container-low border-none rounded-2xl py-4 pl-12 pr-5 text-lg focus:ring-2 focus:ring-primary/20 transition-all appearance-none outline-none">
+                  <select id="timeline" className="w-full bg-surface-container-low border-none rounded-2xl py-4 pl-12 pr-5 text-lg focus:ring-2 focus:ring-primary/20 transition-all appearance-none outline-none">
                     <option>Fixed 2 Weeks</option>
                     <option>1 Month</option>
                     <option>Long Term</option>
@@ -80,7 +98,14 @@ export default function CreateJob() {
               <label className="block text-xs font-semibold uppercase tracking-widest text-outline ml-1">Target Blockchain</label>
               <div className="grid grid-cols-3 gap-4">
                 {/* Solana */}
-                <button className="flex flex-col items-center gap-3 p-6 rounded-2xl bg-surface-container-high border-2 border-primary transition-all shadow-[0_0_15px_rgba(192,193,255,0.1)] cursor-pointer">
+                <button
+                  onClick={() => setBlockchain("Solana")}
+                  className={`flex flex-col items-center gap-3 p-6 rounded-2xl transition-all cursor-pointer ${
+                    blockchain === 'Solana'
+                      ? 'bg-surface-container-high border-2 border-primary shadow-[0_0_15px_rgba(192,193,255,0.1)]'
+                      : 'bg-surface-container-low border-2 border-transparent hover:bg-surface-container-high'
+                  }`}
+                >
                   <div className="w-10 h-10 rounded-full bg-black/20 flex items-center justify-center">
                     <img
                       alt="Solana"
@@ -88,10 +113,17 @@ export default function CreateJob() {
                       src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQNg4fTkMYDYlccbojnj3HwIL_kti_Ko2VoPBHRa3yeOkBP0dSQgV_IY4DpfmOuFFE3FMYLcBsscmKi-50HNLFE2gk3tEeNQU8KN_kBgyYR9hZKhgwV5NFXI6Cow6gXV-rCdLl0OhVe1cxPSF3dBNnTIze3JVZAy7hjQp5XRGUJbCx3ApC2flwPsQHPhgkLL4ta9qUgxIOh6C3SV3eHoEw5YWaWJTzl94hMI9QRlD623GoF7_PI1CN7Pw8O4Wz4BnRv1UEFKIrO6c"
                     />
                   </div>
-                  <span className="text-sm font-bold text-white">Solana</span>
+                  <span className={`text-sm font-bold ${blockchain === 'Solana' ? 'text-white' : 'text-outline'}`}>Solana</span>
                 </button>
                 {/* Ethereum */}
-                <button className="flex flex-col items-center gap-3 p-6 rounded-2xl bg-surface-container-low border-2 border-transparent hover:bg-surface-container-high transition-all cursor-pointer">
+                <button
+                  onClick={() => setBlockchain("Ethereum")}
+                  className={`flex flex-col items-center gap-3 p-6 rounded-2xl transition-all cursor-pointer ${
+                    blockchain === 'Ethereum'
+                      ? 'bg-surface-container-high border-2 border-primary shadow-[0_0_15px_rgba(192,193,255,0.1)]'
+                      : 'bg-surface-container-low border-2 border-transparent hover:bg-surface-container-high'
+                  }`}
+                >
                   <div className="w-10 h-10 rounded-full bg-black/20 flex items-center justify-center">
                     <img
                       alt="Ethereum"
@@ -99,10 +131,17 @@ export default function CreateJob() {
                       src="https://lh3.googleusercontent.com/aida-public/AB6AXuANOdM8WCPJzkHXMHjvdmOmXv_AGr1AY3kNckt24CkRDyDnW7Lh5DorwnCHleRfd7dK3WYHVqoSY_te4S4jTEZO99N1oB56jd9BNuWCQ9kvklxU_d-p0pLpDBfMneD2GFNO8o8-mujpECygYgIU1xTyFlwewlNYmxX2YBgB4-uNPkQvybscYfsdMplE-2VnQFtbwG0vTP5ciFt95dJbxgwyRn4WUW39ScmehlgFligzNA-u4OAxXuN2Va2L0VZbFCHtGjqPAd3gAao"
                     />
                   </div>
-                  <span className="text-sm font-bold text-outline">Ethereum</span>
+                  <span className={`text-sm font-bold ${blockchain === 'Ethereum' ? 'text-white' : 'text-outline'}`}>Ethereum</span>
                 </button>
                 {/* Polygon */}
-                <button className="flex flex-col items-center gap-3 p-6 rounded-2xl bg-surface-container-low border-2 border-transparent hover:bg-surface-container-high transition-all cursor-pointer">
+                <button
+                  onClick={() => setBlockchain("Polygon")}
+                  className={`flex flex-col items-center gap-3 p-6 rounded-2xl transition-all cursor-pointer ${
+                    blockchain === 'Polygon'
+                      ? 'bg-surface-container-high border-2 border-primary shadow-[0_0_15px_rgba(192,193,255,0.1)]'
+                      : 'bg-surface-container-low border-2 border-transparent hover:bg-surface-container-high'
+                  }`}
+                >
                   <div className="w-10 h-10 rounded-full bg-black/20 flex items-center justify-center">
                     <img
                       alt="Polygon"
@@ -110,7 +149,7 @@ export default function CreateJob() {
                       src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZ5_DA2GvryaaeKivaJ36BtiBPEyHQSmGDTfb_fTMPel6FaFrqXoH3oYrVR2gH8Y2bZ3ZzDUKKHOPWOlLSkH1nlBxzeRNenVcpfJ88Cko3ygIqBg9TF7SglzfeDnddigxcQ0wWr9rUfug0Qk3l5J9bKEoqGr-hcOt7rnfX_NTTiD6mO6G3wPdWXMQQGf0AepODyUBmux_cGSEoeQPWgTDmPOpufNWtlWh8lTGsydjH44DdTIRTDqqYACNFsprfsTstJKhE3U7J6YU"
                     />
                   </div>
-                  <span className="text-sm font-bold text-outline">Polygon</span>
+                  <span className={`text-sm font-bold ${blockchain === 'Polygon' ? 'text-white' : 'text-outline'}`}>Polygon</span>
                 </button>
               </div>
             </div>
@@ -152,15 +191,31 @@ export default function CreateJob() {
 
             <div className="space-y-6">
               <div className="space-y-2">
-                <h3 className="text-2xl font-bold leading-tight">Senior Smart Contract Auditor</h3>
+                <h3 className="text-2xl font-bold leading-tight">{title || 'Job Title'}</h3>
                 <div className="flex items-center gap-3">
                   <div className="flex items-center gap-1.5 px-2 py-1 bg-surface-container rounded-lg">
-                    <img
-                      alt="Solana"
-                      className="w-4 h-4"
-                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbel8ejHG4vfICGxijPnBBjTPwNI2woFBIKOHqjdQJ-IX6CFeH-7Vpt8e5COfF0BrGcjv3aXAELyZNSubuhegjIE53iD58awsQLVwa1xmBaxwJE1qA_iL1xGq_K0f8g5fyzUMp4K4qkqw5aGdOH8mPr9bijXILfWrTWpUONjBsHwVnFbl_vXppLTyr249DeFwDWa34RRqy_6liYp87o2fmHcefm0If5vXLYGZxO1YC6ocU4oX0GNLNdswI2jqRYqc7h2RYk5I236E"
-                    />
-                    <span className="text-[10px] font-bold text-on-surface-variant uppercase">Solana Mainnet</span>
+                    {blockchain === 'Solana' && (
+                      <img
+                        alt="Solana"
+                        className="w-4 h-4"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbel8ejHG4vfICGxijPnBBjTPwNI2woFBIKOHqjdQJ-IX6CFeH-7Vpt8e5COfF0BrGcjv3aXAELyZNSubuhegjIE53iD58awsQLVwa1xmBaxwJE1qA_iL1xGq_K0f8g5fyzUMp4K4qkqw5aGdOH8mPr9bijXILfWrTWpUONjBsHwVnFbl_vXppLTyr249DeFwDWa34RRqy_6liYp87o2fmHcefm0If5vXLYGZxO1YC6ocU4oX0GNLNdswI2jqRYqc7h2RYk5I236E"
+                      />
+                    )}
+                    {blockchain === 'Ethereum' && (
+                      <img
+                        alt="Ethereum"
+                        className="w-4 h-4"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuANOdM8WCPJzkHXMHjvdmOmXv_AGr1AY3kNckt24CkRDyDnW7Lh5DorwnCHleRfd7dK3WYHVqoSY_te4S4jTEZO99N1oB56jd9BNuWCQ9kvklxU_d-p0pLpDBfMneD2GFNO8o8-mujpECygYgIU1xTyFlwewlNYmxX2YBgB4-uNPkQvybscYfsdMplE-2VnQFtbwG0vTP5ciFt95dJbxgwyRn4WUW39ScmehlgFligzNA-u4OAxXuN2Va2L0VZbFCHtGjqPAd3gAao"
+                      />
+                    )}
+                    {blockchain === 'Polygon' && (
+                      <img
+                        alt="Polygon"
+                        className="w-4 h-4"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZ5_DA2GvryaaeKivaJ36BtiBPEyHQSmGDTfb_fTMPel6FaFrqXoH3oYrVR2gH8Y2bZ3ZzDUKKHOPWOlLSkH1nlBxzeRNenVcpfJ88Cko3ygIqBg9TF7SglzfeDnddigxcQ0wWr9rUfug0Qk3l5J9bKEoqGr-hcOt7rnfX_NTTiD6mO6G3wPdWXMQQGf0AepODyUBmux_cGSEoeQPWgTDmPOpufNWtlWh8lTGsydjH44DdTIRTDqqYACNFsprfsTstJKhE3U7J6YU"
+                      />
+                    )}
+                    <span className="text-[10px] font-bold text-on-surface-variant uppercase">{blockchain} Mainnet</span>
                   </div>
                   <span className="w-1 h-1 rounded-full bg-outline-variant"></span>
                   <span className="text-[10px] font-mono text-outline uppercase tracking-widest">Updated just now</span>
@@ -171,12 +226,12 @@ export default function CreateJob() {
 
               <div className="space-y-4">
                 <p className="text-sm text-on-surface-variant leading-relaxed">
-                  Looking for a security expert to audit a set of Rust-based Anchor programs for an upcoming DeFi protocol...
+                  {description || 'No description provided.'}
                 </p>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="p-4 rounded-xl bg-surface-container-low border border-white/5">
                     <span className="text-[10px] uppercase tracking-widest text-outline block mb-1">Budget</span>
-                    <span className="text-xl font-bold font-mono">$5,200</span>
+                    <span className="text-xl font-bold font-mono">${budget || '0'}</span>
                   </div>
                   <div className="p-4 rounded-xl bg-surface-container-low border border-white/5">
                     <span className="text-[10px] uppercase tracking-widest text-outline block mb-1">Escrow</span>
