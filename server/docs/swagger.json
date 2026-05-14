@@ -1,0 +1,19 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "ChainWork API",
+    "version": "1.0.0",
+    "description": "Decentralized freelance marketplace backend"
+  },
+  "servers": [{ "url": "http://localhost:5000/api" }],
+  "paths": {},
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
