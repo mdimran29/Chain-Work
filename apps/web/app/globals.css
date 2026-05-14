@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #c0c1ff;
+  --color-primary-container: #8083ff;
+  --color-secondary: #d9b9ff;
+  --color-secondary-container: #6600c0;
+  --color-tertiary: #4edea3;
+
+  --color-background: #121315;
+  --color-surface: #121315;
+  --color-on-surface: #e3e2e3;
+  --color-surface-container: #1f2021;
+  --color-surface-container-low: #1b1c1d;
+  --color-surface-container-lowest: #0d0e0f;
+  --color-surface-container-high: #292a2b;
+  --color-surface-container-highest: #343536;
+
+  --color-outline: #908fa0;
+  --color-outline-variant: #464554;
+  --color-on-surface-variant: #c7c4d7;
+
+  --color-on-primary: #1000a9;
+  --color-on-primary-container: #0d0096;
+  --color-on-secondary-container: #cea7ff;
+
+  --color-error: #ffb4ab;
+}
+
+/* Base resets & Theme enforcement */
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-on-surface);
+  }
+}
+
+/* Material Symbols Rules */
+.material-symbols-outlined {
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+}
+
+/* Custom Web3 Aesthetic Utility Classes */
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 20px rgba(192, 193, 255, 0.3);
+  }
+  .glass-gradient {
+    background: linear-gradient(135deg, rgba(192, 193, 255, 0.1) 0%, rgba(102, 0, 192, 0.05) 100%);
+  }
+}

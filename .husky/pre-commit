@@ -1,0 +1,4 @@
+# Run lint-staged — only auto-format JSON/CSS/Markdown
+# Per-package linting (eslint) is handled via `pnpm turbo lint` in CI,
+# not in the pre-commit hook, to avoid monorepo config-resolution issues.
+pnpm exec lint-staged

@@ -1,18 +1,23 @@
 {
   "name": "chainwork-contract",
   "version": "0.1.0",
-  "description": "Solana smart contracts for ChainWork",
-  "main": "index.js",
+  "private": true,
+  "description": "ChainWork Anchor/Solana smart contracts",
   "scripts": {
-    "test": "anchor test"
+    "build": "anchor build",
+    "test": "anchor test",
+    "deploy": "anchor deploy",
+    "clean": "rm -rf target"
   },
   "dependencies": {
     "@coral-xyz/anchor": "^0.29.0"
   },
   "devDependencies": {
     "chai": "^4.3.4",
-    "mocha": "^9.0.3",
-    "ts-mocha": "^8.0.0",
-    "typescript": "^4.3.5"
+    "mocha": "^10.0.0",
+    "ts-mocha": "^10.0.0",
+    "typescript": "^5.3.3",
+    "@types/chai": "^4.3.4",
+    "@types/mocha": "^10.0.0"
   }
 }
