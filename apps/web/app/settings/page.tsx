@@ -26,7 +26,7 @@ export default function SettingsPage() {
         <div className="max-w-5xl mx-auto">
           <header className="mb-12">
             <h1 className="text-4xl font-black tracking-tight mb-2 text-white">
-              The Curator's Command
+              The Curator&apos;s Command
             </h1>
             <p className="text-on-surface-variant text-lg">
               Adjust your presence in the digital ether.

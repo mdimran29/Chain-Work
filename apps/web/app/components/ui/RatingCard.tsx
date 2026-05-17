@@ -66,7 +66,7 @@ export function RatingCard({
             <span className="text-xs text-on-surface-variant font-mono">{date}</span>
           </div>
           <p className="text-on-surface-variant leading-relaxed text-sm max-w-3xl">
-            "{reviewText}"
+            &quot;{reviewText}&quot;
           </p>
         </div>
         <div className="flex flex-row md:flex-col items-center md:items-end justify-between md:justify-start gap-4">

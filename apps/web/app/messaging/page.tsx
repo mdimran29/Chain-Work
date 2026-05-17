@@ -65,7 +65,7 @@ export default function MessagingPage() {
                   Solidity Audit
                 </div>
                 <p className="text-slate-500 text-xs truncate">
-                  Thanks! I'll review the report by Monday morning.
+                  Thanks! I&apos;ll review the report by Monday morning.
                 </p>
               </div>
             </button>

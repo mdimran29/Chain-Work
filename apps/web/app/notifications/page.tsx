@@ -53,7 +53,8 @@ export default function NotificationsPage() {
               description={
                 <>
                   <span className="text-primary font-semibold">Alex Rivera</span> submitted a
-                  proposal for <span className="italic">"Solidity Smart Contract Audit"</span>.
+                  proposal for{" "}
+                  <span className="italic">&quot;Solidity Smart Contract Audit&quot;</span>.
                 </>
               }
             />
@@ -83,7 +84,9 @@ export default function NotificationsPage() {
               description={
                 <>
                   Your proposal for{" "}
-                  <span className="text-secondary font-semibold">"DAO Governance UI Design"</span>{" "}
+                  <span className="text-secondary font-semibold">
+                    &quot;DAO Governance UI Design&quot;
+                  </span>{" "}
                   was accepted by the client.
                 </>
               }
@@ -99,8 +102,8 @@ export default function NotificationsPage() {
               description={
                 <>
                   A new project matching your skills:{" "}
-                  <span className="italic">"Full-stack Web3 Dashboard Development"</span> was just
-                  posted.
+                  <span className="italic">&quot;Full-stack Web3 Dashboard Development&quot;</span>{" "}
+                  was just posted.
                 </>
               }
             />
@@ -124,7 +127,7 @@ export default function NotificationsPage() {
               description={
                 <>
                   <span className="text-on-surface">Genesis Labs</span> left you a 5-star review for
-                  the project <span className="italic">"L2 Bridge Integration"</span>.
+                  the project <span className="italic">&quot;L2 Bridge Integration&quot;</span>.
                 </>
               }
             />
@@ -141,8 +144,8 @@ export default function NotificationsPage() {
                   Your Weekly Curator Report is Ready
                 </h3>
                 <p className="text-on-surface-variant max-w-md">
-                  We've compiled a summary of 24 projects matching your profile in the Decentralized
-                  Infrastructure sector.
+                  We&apos;ve compiled a summary of 24 projects matching your profile in the
+                  Decentralized Infrastructure sector.
                 </p>
               </div>
               <button className="mt-8 w-fit px-8 py-3 bg-white text-background rounded-xl font-bold text-sm hover:scale-105 transition-all">

@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // apps/web is now the proper Next.js project root — no turbopack root override needed
+  reactStrictMode: true,
+  transpilePackages: ["@chainwork/ui"],
 };
 
 export default nextConfig;

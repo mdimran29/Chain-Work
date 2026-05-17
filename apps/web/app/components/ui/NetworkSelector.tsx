@@ -60,7 +60,7 @@ export function NetworkSelector() {
             <div className="px-3 py-2 bg-error/10 text-error rounded-xl flex items-start gap-2 max-w-[200px] text-xs">
               <span className="material-symbols-outlined text-sm shrink-0 mt-0.5">warning</span>
               <p className="leading-tight">
-                Verify you're on the correct network before finalizing smart contracts.
+                Verify you&apos;re on the correct network before finalizing smart contracts.
               </p>
             </div>
           </div>
