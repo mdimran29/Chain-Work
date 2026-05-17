@@ -1,0 +1,33 @@
+{
+  "name": "@chainwork/backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ChainWork REST API — Express + MongoDB",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "lint": "eslint .",
+    "clean": "rm -rf dist"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "express": "4.18.2",
+    "mongoose": "5.13.22",
+    "jsonwebtoken": "^8.5.1",
+    "bcryptjs": "^2.4.3",
+    "tweetnacl": "^1.0.3",
+    "bs58": "4.0.1",
+    "cors": "^2.8.5",
+    "express-rate-limit": "^7.0.0",
+    "dotenv": "^10.0.0",
+    "swagger-ui-express": "^5.0.0",
+    "helmet": "^7.0.0"
+  },
+  "devDependencies": {
+    "@chainwork/config": "workspace:*",
+    "nodemon": "^3.0.0"
+  }
+}
