@@ -1,0 +1,812 @@
+// Auto-generated IDL export for better bundler compatibility
+export const CHAINWORK_IDL = {
+  address: "JBjHCEj1Vo6nJPtNULHKZb8PHGscQirsVhy7U2qExcPh",
+  metadata: {
+    name: "chainwork",
+    version: "0.1.0",
+    spec: "0.1.0",
+    description: "ChainWork Trustless Escrow Program",
+  },
+  instructions: [
+    {
+      name: "accept",
+      discriminator: [65, 150, 70, 216, 133, 6, 107, 4],
+      accounts: [
+        {
+          name: "escrow",
+          writable: true,
+          pda: {
+            seeds: [
+              {
+                kind: "const",
+                value: [101, 115, 99, 114, 111, 119],
+              },
+              {
+                kind: "account",
+                path: "escrow.initializer",
+                account: "EscrowAccount",
+              },
+              {
+                kind: "account",
+                path: "freelancer",
+              },
+            ],
+          },
+        },
+        {
+          name: "freelancer",
+          docs: ["Must be the freelancer stored in the escrow"],
+          signer: true,
+          relations: ["escrow"],
+        },
+      ],
+      args: [],
+    },
+    {
+      name: "cancel_sol",
+      discriminator: [251, 100, 143, 59, 33, 194, 128, 131],
+      accounts: [
+        {
+          name: "escrow",
+          writable: true,
+          pda: {
+            seeds: [
+              {
+                kind: "const",
+                value: [101, 115, 99, 114, 111, 119],
+              },
+              {
+                kind: "account",
+                path: "initializer",
+              },
+              {
+                kind: "account",
+                path: "escrow.freelancer",
+                account: "EscrowAccount",
+              },
+            ],
+          },
+        },
+        {
+          name: "initializer",
+          writable: true,
+          signer: true,
+          relations: ["escrow"],
+        },
+      ],
+      args: [],
+    },
+    {
+      name: "cancel_token",
+      discriminator: [218, 217, 51, 106, 130, 11, 150, 226],
+      accounts: [
+        {
+          name: "escrow",
+          writable: true,
+          pda: {
+            seeds: [
+              {
+                kind: "const",
+                value: [101, 115, 99, 114, 111, 119],
+              },
+              {
+                kind: "account",
+                path: "initializer",
+              },
+              {
+                kind: "account",
+                path: "escrow.freelancer",
+                account: "EscrowAccount",
+              },
+            ],
+          },
+        },
+        {
+          name: "initializer",
+          writable: true,
+          signer: true,
+          relations: ["escrow"],
+        },
+        {
+          name: "token_mint",
+        },
+        {
+          name: "vault_token_account",
+          docs: ["Vault ATA owned by escrow PDA"],
+          writable: true,
+          pda: {
+            seeds: [
+              {
+                kind: "const",
+                value: [118, 97, 117, 108, 116],
+              },
+              {
+                kind: "account",
+                path: "escrow",
+              },
+            ],
+          },
+        },
+        {
+          name: "initializer_token_account",
+          docs: ["Initializer's ATA for refund"],
+          writable: true,
+        },
+        {
+          name: "token_program",
+          address: "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+        },
+      ],
+      args: [],
+    },
+    {
+      name: "dispute",
+      discriminator: [216, 92, 128, 146, 202, 85, 135, 73],
+      accounts: [
+        {
+          name: "escrow",
+          writable: true,
+          pda: {
+            seeds: [
+              {
+                kind: "const",
+                value: [101, 115, 99, 114, 111, 119],
+              },
+              {
+                kind: "account",
+                path: "escrow.initializer",
+                account: "EscrowAccount",
+              },
+              {
+                kind: "account",
+                path: "escrow.freelancer",
+                account: "EscrowAccount",
+              },
+            ],
+          },
+        },
+        {
+          name: "caller",
+          signer: true,
+        },
+      ],
+      args: [],
+    },
+    {
+      name: "initialize_sol",
+      discriminator: [82, 48, 211, 75, 9, 156, 35, 208],
+      accounts: [
+        {
+          name: "escrow",
+          docs: ['PDA: seeds = ["escrow", initializer, freelancer]'],
+          writable: true,
+          pda: {
+            seeds: [
+              {
+                kind: "const",
+                value: [101, 115, 99, 114, 111, 119],
+              },
+              {
+                kind: "account",
+                path: "initializer",
+              },
+              {
+                kind: "account",
+                path: "freelancer",
+              },
+            ],
+          },
+        },
+        {
+          name: "initializer",
+          writable: true,
+          signer: true,
+        },
+        {
+          name: "freelancer",
+        },
+        {
+          name: "system_program",
+          address: "11111111111111111111111111111111",
+        },
+      ],
+      args: [
+        {
+          name: "amount",
+          type: "u64",
+        },
+      ],
+    },
+    {
+      name: "initialize_sol_with_deadline",
+      discriminator: [194, 43, 97, 224, 62, 8, 237, 58],
+      accounts: [
+        {
+          name: "escrow",
+          docs: ['PDA: seeds = ["escrow", initializer, freelancer]'],
+          writable: true,
+          pda: {
+            seeds: [
+              {
+                kind: "const",
+                value: [101, 115, 99, 114, 111, 119],
+              },
+              {
+                kind: "account",
+                path: "initializer",
+              },
+              {
+                kind: "account",
+                path: "freelancer",
+              },
+            ],
+          },
+        },
+        {
+          name: "initializer",
+          writable: true,
+          signer: true,
+        },
+        {
+          name: "freelancer",
+        },
+        {
+          name: "system_program",
+          address: "11111111111111111111111111111111",
+        },
+      ],
+      args: [
+        {
+          name: "amount",
+          type: "u64",
+        },
+        {
+          name: "deadline",
+          type: "i64",
+        },
+      ],
+    },
+    {
+      name: "initialize_token",
+      discriminator: [38, 209, 150, 50, 190, 117, 16, 54],
+      accounts: [
+        {
+          name: "escrow",
+          docs: ['PDA: seeds = ["escrow", initializer, freelancer]'],
+          writable: true,
+          pda: {
+            seeds: [
+              {
+                kind: "const",
+                value: [101, 115, 99, 114, 111, 119],
+              },
+              {
+                kind: "account",
+                path: "initializer",
+              },
+              {
+                kind: "account",
+                path: "freelancer",
+              },
+            ],
+          },
+        },
+        {
+          name: "initializer",
+          writable: true,
+          signer: true,
+        },
+        {
+          name: "freelancer",
+        },
+        {
+          name: "token_mint",
+        },
+        {
+          name: "initializer_token_account",
+          docs: ["Initializer's ATA for the token mint"],
+          writable: true,
+        },
+        {
+          name: "vault_token_account",
+          docs: ["Vault ATA owned by the escrow PDA; created here"],
+          writable: true,
+          pda: {
+            seeds: [
+              {
+                kind: "const",
+                value: [118, 97, 117, 108, 116],
+              },
+              {
+                kind: "account",
+                path: "escrow",
+              },
+            ],
+          },
+        },
+        {
+          name: "token_program",
+          address: "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+        },
+        {
+          name: "system_program",
+          address: "11111111111111111111111111111111",
+        },
+        {
+          name: "rent",
+          address: "SysvarRent111111111111111111111111111111111",
+        },
+      ],
+      args: [
+        {
+          name: "amount",
+          type: "u64",
+        },
+      ],
+    },
+    {
+      name: "initialize_token_with_deadline",
+      discriminator: [193, 15, 151, 57, 199, 157, 62, 19],
+      accounts: [
+        {
+          name: "escrow",
+          docs: ['PDA: seeds = ["escrow", initializer, freelancer]'],
+          writable: true,
+          pda: {
+            seeds: [
+              {
+                kind: "const",
+                value: [101, 115, 99, 114, 111, 119],
+              },
+              {
+                kind: "account",
+                path: "initializer",
+              },
+              {
+                kind: "account",
+                path: "freelancer",
+              },
+            ],
+          },
+        },
+        {
+          name: "initializer",
+          writable: true,
+          signer: true,
+        },
+        {
+          name: "freelancer",
+        },
+        {
+          name: "token_mint",
+        },
+        {
+          name: "initializer_token_account",
+          docs: ["Initializer's ATA for the token mint"],
+          writable: true,
+        },
+        {
+          name: "vault_token_account",
+          docs: ["Vault ATA owned by the escrow PDA; created here"],
+          writable: true,
+          pda: {
+            seeds: [
+              {
+                kind: "const",
+                value: [118, 97, 117, 108, 116],
+              },
+              {
+                kind: "account",
+                path: "escrow",
+              },
+            ],
+          },
+        },
+        {
+          name: "token_program",
+          address: "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+        },
+        {
+          name: "system_program",
+          address: "11111111111111111111111111111111",
+        },
+        {
+          name: "rent",
+          address: "SysvarRent111111111111111111111111111111111",
+        },
+      ],
+      args: [
+        {
+          name: "amount",
+          type: "u64",
+        },
+        {
+          name: "deadline",
+          type: "i64",
+        },
+      ],
+    },
+    {
+      name: "release_sol",
+      discriminator: [58, 64, 23, 194, 212, 156, 137, 9],
+      accounts: [
+        {
+          name: "escrow",
+          writable: true,
+          pda: {
+            seeds: [
+              {
+                kind: "const",
+                value: [101, 115, 99, 114, 111, 119],
+              },
+              {
+                kind: "account",
+                path: "initializer",
+              },
+              {
+                kind: "account",
+                path: "escrow.freelancer",
+                account: "EscrowAccount",
+              },
+            ],
+          },
+        },
+        {
+          name: "initializer",
+          docs: ["Must be the initializer (client)"],
+          writable: true,
+          signer: true,
+          relations: ["escrow"],
+        },
+        {
+          name: "freelancer",
+          writable: true,
+        },
+      ],
+      args: [],
+    },
+    {
+      name: "release_token",
+      discriminator: [192, 176, 15, 44, 67, 107, 96, 143],
+      accounts: [
+        {
+          name: "escrow",
+          writable: true,
+          pda: {
+            seeds: [
+              {
+                kind: "const",
+                value: [101, 115, 99, 114, 111, 119],
+              },
+              {
+                kind: "account",
+                path: "initializer",
+              },
+              {
+                kind: "account",
+                path: "escrow.freelancer",
+                account: "EscrowAccount",
+              },
+            ],
+          },
+        },
+        {
+          name: "initializer",
+          writable: true,
+          signer: true,
+          relations: ["escrow"],
+        },
+        {
+          name: "token_mint",
+        },
+        {
+          name: "vault_token_account",
+          docs: ["Vault ATA owned by escrow PDA"],
+          writable: true,
+          pda: {
+            seeds: [
+              {
+                kind: "const",
+                value: [118, 97, 117, 108, 116],
+              },
+              {
+                kind: "account",
+                path: "escrow",
+              },
+            ],
+          },
+        },
+        {
+          name: "freelancer_token_account",
+          docs: ["Freelancer's ATA for the token mint"],
+          writable: true,
+        },
+        {
+          name: "token_program",
+          address: "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+        },
+      ],
+      args: [],
+    },
+  ],
+  accounts: [
+    {
+      name: "EscrowAccount",
+      discriminator: [36, 69, 48, 18, 128, 225, 125, 135],
+    },
+  ],
+  events: [
+    {
+      name: "EscrowAccepted",
+      discriminator: [129, 122, 76, 235, 127, 11, 32, 165],
+    },
+    {
+      name: "EscrowCancelled",
+      discriminator: [98, 241, 195, 122, 213, 0, 162, 161],
+    },
+    {
+      name: "EscrowCreated",
+      discriminator: [70, 127, 105, 102, 92, 97, 7, 173],
+    },
+    {
+      name: "EscrowDisputed",
+      discriminator: [132, 73, 81, 200, 177, 51, 128, 18],
+    },
+    {
+      name: "EscrowReleased",
+      discriminator: [131, 7, 138, 104, 166, 190, 113, 112],
+    },
+  ],
+  errors: [
+    {
+      code: 6000,
+      name: "InvalidAmount",
+      msg: "Amount must be greater than zero.",
+    },
+    {
+      code: 6001,
+      name: "AlreadyAccepted",
+      msg: "Escrow has already been accepted by the freelancer.",
+    },
+    {
+      code: 6002,
+      name: "NotAccepted",
+      msg: "Escrow has not been accepted by the freelancer yet.",
+    },
+    {
+      code: 6003,
+      name: "EscrowAlreadyCompleted",
+      msg: "Escrow has already been completed (released or cancelled).",
+    },
+    {
+      code: 6004,
+      name: "DeadlineInPast",
+      msg: "The deadline timestamp is in the past.",
+    },
+    {
+      code: 6005,
+      name: "DeadlineExpired",
+      msg: "The escrow deadline has already expired.",
+    },
+    {
+      code: 6006,
+      name: "DeadlineNotExpired",
+      msg: "The deadline has not yet expired; cancellation not permitted.",
+    },
+    {
+      code: 6007,
+      name: "Unauthorized",
+      msg: "Caller is not authorized to perform this action.",
+    },
+    {
+      code: 6008,
+      name: "InvalidMint",
+      msg: "The provided token mint does not match the escrow's token mint.",
+    },
+    {
+      code: 6009,
+      name: "Overflow",
+      msg: "Arithmetic overflow occurred.",
+    },
+  ],
+  types: [
+    {
+      name: "EscrowAccepted",
+      docs: ["Emitted when the freelancer accepts the escrow"],
+      type: {
+        kind: "struct",
+        fields: [
+          {
+            name: "escrow",
+            docs: ["The PDA address of the escrow account"],
+            type: "pubkey",
+          },
+          {
+            name: "freelancer",
+            docs: ["Freelancer who accepted"],
+            type: "pubkey",
+          },
+        ],
+      },
+    },
+    {
+      name: "EscrowAccount",
+      docs: [
+        "The on-chain state of a ChainWork escrow contract.",
+        "",
+        'PDA seeds: ["escrow", initializer, freelancer]',
+      ],
+      type: {
+        kind: "struct",
+        fields: [
+          {
+            name: "initializer",
+            docs: ["Client who funded the escrow"],
+            type: "pubkey",
+          },
+          {
+            name: "freelancer",
+            docs: ["Freelancer receiving payment"],
+            type: "pubkey",
+          },
+          {
+            name: "amount",
+            docs: ["Locked amount (lamports or token units)"],
+            type: "u64",
+          },
+          {
+            name: "is_accepted",
+            docs: ["Whether the freelancer has accepted the job"],
+            type: "bool",
+          },
+          {
+            name: "is_completed",
+            docs: ["Whether the escrow has been completed (released or cancelled)"],
+            type: "bool",
+          },
+          {
+            name: "deadline",
+            docs: ["Optional Unix timestamp deadline; None = no deadline"],
+            type: {
+              option: "i64",
+            },
+          },
+          {
+            name: "token_mint",
+            docs: ["SPL token mint; None = SOL-based escrow"],
+            type: {
+              option: "pubkey",
+            },
+          },
+          {
+            name: "bump",
+            docs: ["PDA bump seed for signing"],
+            type: "u8",
+          },
+        ],
+      },
+    },
+    {
+      name: "EscrowCancelled",
+      docs: ["Emitted when the client cancels the escrow and gets a refund"],
+      type: {
+        kind: "struct",
+        fields: [
+          {
+            name: "escrow",
+            docs: ["The PDA address of the escrow account"],
+            type: "pubkey",
+          },
+          {
+            name: "initializer",
+            docs: ["Client who cancelled"],
+            type: "pubkey",
+          },
+          {
+            name: "freelancer",
+            docs: ["Freelancer who was assigned"],
+            type: "pubkey",
+          },
+          {
+            name: "amount",
+            docs: ["Amount refunded"],
+            type: "u64",
+          },
+        ],
+      },
+    },
+    {
+      name: "EscrowCreated",
+      docs: ["Emitted when a new escrow is created (SOL or Token, with or without deadline)"],
+      type: {
+        kind: "struct",
+        fields: [
+          {
+            name: "escrow",
+            docs: ["The PDA address of the escrow account"],
+            type: "pubkey",
+          },
+          {
+            name: "initializer",
+            docs: ["Client who created the escrow"],
+            type: "pubkey",
+          },
+          {
+            name: "freelancer",
+            docs: ["Freelancer assigned to the escrow"],
+            type: "pubkey",
+          },
+          {
+            name: "amount",
+            docs: ["Amount locked (lamports or token units)"],
+            type: "u64",
+          },
+          {
+            name: "token_mint",
+            docs: ["SPL token mint; None = SOL"],
+            type: {
+              option: "pubkey",
+            },
+          },
+          {
+            name: "deadline",
+            docs: ["Optional deadline Unix timestamp"],
+            type: {
+              option: "i64",
+            },
+          },
+        ],
+      },
+    },
+    {
+      name: "EscrowDisputed",
+      docs: ["Emitted when a dispute is raised by either party"],
+      type: {
+        kind: "struct",
+        fields: [
+          {
+            name: "escrow",
+            docs: ["The PDA address of the escrow account"],
+            type: "pubkey",
+          },
+          {
+            name: "raised_by",
+            docs: ["The party (initializer or freelancer) who raised the dispute"],
+            type: "pubkey",
+          },
+        ],
+      },
+    },
+    {
+      name: "EscrowReleased",
+      docs: ["Emitted when the client releases funds to the freelancer"],
+      type: {
+        kind: "struct",
+        fields: [
+          {
+            name: "escrow",
+            docs: ["The PDA address of the escrow account"],
+            type: "pubkey",
+          },
+          {
+            name: "initializer",
+            docs: ["Client who released"],
+            type: "pubkey",
+          },
+          {
+            name: "freelancer",
+            docs: ["Freelancer who received funds"],
+            type: "pubkey",
+          },
+          {
+            name: "amount",
+            docs: ["Amount released"],
+            type: "u64",
+          },
+        ],
+      },
+    },
+  ],
+} as const;
+
+export default CHAINWORK_IDL;

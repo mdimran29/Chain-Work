@@ -9,15 +9,19 @@ const JobSchema = new mongoose.Schema({
   skills: [{ type: String, trim: true }],
   status: {
     type: String,
-    enum: ["open", "active", "completed", "disputed"],
+    enum: ["open", "active", "review", "completed", "disputed", "cancelled"],
     default: "open",
   },
   client: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
   freelancer: { type: mongoose.Schema.Types.ObjectId, ref: "User", default: null },
+  // On-chain fields
   escrowAddress: { type: String, default: null },
+  freelancerWallet: { type: String, default: null },
+  txHash: { type: String, default: null },
   proposals: [
     {
-      freelancer: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+      freelancer: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+      freelancerWallet: { type: String },
       bid: { type: Number, required: true, min: 0 },
       coverLetter: { type: String, maxlength: 2000 },
       status: {
@@ -37,6 +41,7 @@ JobSchema.index({ client: 1 });
 JobSchema.index({ chain: 1 });
 JobSchema.index({ skills: 1 });
 JobSchema.index({ createdAt: -1 });
+JobSchema.index({ escrowAddress: 1 });
 
 // Virtual field for proposal count
 JobSchema.virtual("proposalCount").get(function () {

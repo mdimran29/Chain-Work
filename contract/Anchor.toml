@@ -1,8 +1,8 @@
 [programs.localnet]
-chainwork = "BKrfKJSFgPP1jvAZDLxQymwQYov8ktZntVdE9TBLHrLr"
+chainwork = "JBjHCEj1Vo6nJPtNULHKZb8PHGscQirsVhy7U2qExcPh"
 
 [programs.devnet]
-chainwork = "BKrfKJSFgPP1jvAZDLxQymwQYov8ktZntVdE9TBLHrLr"
+chainwork = "JBjHCEj1Vo6nJPtNULHKZb8PHGscQirsVhy7U2qExcPh"
 
 [registry]
 url = "https://api.apr.dev"

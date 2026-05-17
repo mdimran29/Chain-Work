@@ -15,7 +15,7 @@ if (!program) {
 }
 
 describe("chainwork-escrow", () => {
-  const programId = new PublicKey("BKrfKJSFgPP1jvAZDLxQymwQYov8ktZntVdE9TBLHrLr");
+  const programId = program.programId;
 
   const airdrop = async (pubkey: PublicKey, sol = 5) => {
     const sig = await provider.connection.requestAirdrop(pubkey, sol * LAMPORTS_PER_SOL);

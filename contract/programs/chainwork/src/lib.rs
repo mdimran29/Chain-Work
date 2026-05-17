@@ -10,7 +10,7 @@ use errors::ChainworkError;
 use events::*;
 use state::EscrowAccount;
 
-declare_id!("BKrfKJSFgPP1jvAZDLxQymwQYov8ktZntVdE9TBLHrLr");
+declare_id!("JBjHCEj1Vo6nJPtNULHKZb8PHGscQirsVhy7U2qExcPh");
 
 #[program]
 pub mod chainwork {

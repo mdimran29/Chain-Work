@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Navbar from "./components/Navbar";
+import { SolanaWalletProvider } from "./providers/WalletProvider";
+import { ChainWorkProvider } from "./providers/ChainWorkProvider";
 import "./globals.css";
+import "@solana/wallet-adapter-react-ui/styles.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -53,9 +56,12 @@ export default function RootLayout({
       <body
         className={`${inter.className} bg-background text-on-surface selection:bg-primary/30 antialiased`}
       >
-        <Navbar />
-
-        {children}
+        <SolanaWalletProvider>
+          <ChainWorkProvider>
+            <Navbar />
+            {children}
+          </ChainWorkProvider>
+        </SolanaWalletProvider>
       </body>
     </html>
   );

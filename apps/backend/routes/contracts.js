@@ -1,29 +1,22 @@
 const express = require("express");
 const router = express.Router();
-const contractController = require("../controllers/contractController");
+const c = require("../controllers/contractController");
 
-router.get("/", (req, res) => {
-  res.status(501).json({ message: "Not implemented yet" });
-});
+// Job CRUD
+router.get("/", c.listJobs);
+router.post("/", c.createJob);
+router.get("/:id", c.getJob);
+router.patch("/:id", c.updateJob);
 
-router.post("/", (req, res) => {
-  res.status(501).json({ message: "Not implemented yet" });
-});
+// Escrow lifecycle actions
+router.post("/:id/fund-escrow", c.fundEscrow);
+router.post("/:id/accept", c.acceptJob);
+router.post("/:id/deliver", c.deliverJob);
+router.post("/:id/release", c.releasePayment);
+router.post("/:id/cancel", c.cancelJob);
 
-router.get("/:id", (req, res) => {
-  res.status(501).json({ message: "Not implemented yet" });
-});
-
-router.patch("/:id", (req, res) => {
-  res.status(501).json({ message: "Not implemented yet" });
-});
-
-router.post("/:id/proposals", (req, res) => {
-  res.status(501).json({ message: "Not implemented yet" });
-});
-
-router.patch("/:id/proposals/:pid", (req, res) => {
-  res.status(501).json({ message: "Not implemented yet" });
-});
+// Proposals
+router.post("/:id/proposals", c.submitProposal);
+router.patch("/:id/proposals/:pid", c.updateProposal);
 
 module.exports = router;

@@ -1,7 +1,10 @@
 import { AnchorProvider, Program, BN } from "@coral-xyz/anchor";
 import { PublicKey, SystemProgram } from "@solana/web3.js";
-import { PROGRAM_ID } from "./constants";
+import { PROGRAM_ID, ESCROW_SEED } from "./constants";
 import type { EscrowAccount } from "./types";
+import { CHAINWORK_IDL as idl } from "./chainwork";
+
+// Anchor v0.29+: Program(idl, provider) — program ID comes from idl.address
 
 /**
  * ChainWorkSDK — typed wrapper around the Anchor escrow program.
@@ -9,15 +12,18 @@ import type { EscrowAccount } from "./types";
  */
 export class ChainWorkSDK {
   private provider: AnchorProvider;
+  public program: Program;
 
   constructor(provider: AnchorProvider) {
     this.provider = provider;
+    // Anchor v0.29+: 2-arg constructor — (idl, provider). Program ID is read from idl.address.
+    this.program = new Program(idl as any, provider as any);
   }
 
   /** Derive the escrow PDA for a given client + freelancer pair */
   async findEscrowPDA(client: PublicKey, freelancer: PublicKey): Promise<[PublicKey, number]> {
     return PublicKey.findProgramAddressSync(
-      [Buffer.from("chainwork-escrow"), client.toBuffer(), freelancer.toBuffer()],
+      [Buffer.from(ESCROW_SEED), client.toBuffer(), freelancer.toBuffer()],
       PROGRAM_ID,
     );
   }
@@ -28,8 +34,19 @@ export class ChainWorkSDK {
    * @param freelancer     - Freelancer's wallet public key
    */
   async initializeSol(amountLamports: number, freelancer: PublicKey): Promise<string> {
-    // TODO: Attach generated IDL once `anchor build` has run
-    throw new Error("initializeSol: attach generated IDL from target/idl/chainwork.json");
+    const [escrowPDA] = await this.findEscrowPDA(this.provider.wallet.publicKey, freelancer);
+
+    const tx = await this.program.methods
+      .initializeSol(new BN(amountLamports))
+      .accounts({
+        escrow: escrowPDA,
+        initializer: this.provider.wallet.publicKey,
+        freelancer: freelancer,
+        systemProgram: SystemProgram.programId,
+      })
+      .rpc();
+
+    return tx;
   }
 
   /**
@@ -37,7 +54,15 @@ export class ChainWorkSDK {
    * @param escrowPDA - PDA of the escrow account
    */
   async accept(escrowPDA: PublicKey): Promise<string> {
-    throw new Error("accept: attach generated IDL from target/idl/chainwork.json");
+    const tx = await this.program.methods
+      .accept()
+      .accounts({
+        escrow: escrowPDA,
+        freelancer: this.provider.wallet.publicKey,
+      })
+      .rpc();
+
+    return tx;
   }
 
   /**
@@ -46,6 +71,31 @@ export class ChainWorkSDK {
    * @param freelancer - Freelancer's wallet public key
    */
   async releaseSol(escrowPDA: PublicKey, freelancer: PublicKey): Promise<string> {
-    throw new Error("releaseSol: attach generated IDL from target/idl/chainwork.json");
+    const tx = await this.program.methods
+      .releaseSol()
+      .accounts({
+        escrow: escrowPDA,
+        initializer: this.provider.wallet.publicKey,
+        freelancer: freelancer,
+      })
+      .rpc();
+
+    return tx;
+  }
+
+  /**
+   * Cancel SOL escrow and return funds to client (called by client).
+   * @param escrowPDA - PDA of the escrow account
+   */
+  async cancelSol(escrowPDA: PublicKey): Promise<string> {
+    const tx = await this.program.methods
+      .cancelSol()
+      .accounts({
+        escrow: escrowPDA,
+        initializer: this.provider.wallet.publicKey,
+      })
+      .rpc();
+
+    return tx;
   }
 }

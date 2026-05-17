@@ -1,6 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { useWallet } from "@solana/wallet-adapter-react";
+import { useChainWork } from "../providers/ChainWorkProvider";
+import { useRouter } from "next/navigation";
+
+const API = "http://localhost:5000/api/jobs";
 
 export default function CreateJob() {
   const [title, setTitle] = useState("Senior Smart Contract Auditor");
@@ -8,8 +13,95 @@ export default function CreateJob() {
     "Looking for a security expert to audit a set of Rust-based Anchor programs for an upcoming DeFi protocol...",
   );
   const [budget, setBudget] = useState("5200");
+  const [timeline, setTimeline] = useState("2weeks");
   const [blockchain, setBlockchain] = useState("Solana");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStep, setSubmitStep] = useState<"idle" | "saving" | "signing" | "done">("idle");
 
+  const { publicKey } = useWallet();
+  const { sdk } = useChainWork();
+  const router = useRouter();
+
+  const handleSubmit = async () => {
+    if (!publicKey) {
+      alert("Please connect your wallet first");
+      return;
+    }
+
+    try {
+      setIsSubmitting(true);
+
+      // Normalise values
+      const normalTimeline = ["2weeks", "1month", "longterm"].includes(timeline)
+        ? timeline
+        : "2weeks";
+      const normalChain = blockchain.toLowerCase();
+
+      // ─── Step 1: Save job to DB (no escrow yet) ──────────────────────────
+      setSubmitStep("saving");
+      const createRes = await fetch(API, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          title,
+          description,
+          budget: parseFloat(budget),
+          timeline: normalTimeline,
+          chain: normalChain,
+          walletAddress: publicKey.toBase58(),
+        }),
+      });
+
+      if (!createRes.ok) {
+        const err = await createRes.json();
+        throw new Error(err.error || "Failed to save job");
+      }
+
+      const job = await createRes.json();
+
+      // ─── Step 2: Initialize escrow on-chain (only for Solana) ─────────────
+      if (normalChain === "solana" && sdk) {
+        setSubmitStep("signing");
+        const amountInLamports = Math.floor(parseFloat(budget) * 1e9);
+
+        // Use a placeholder freelancer key — will be replaced when a real
+        // freelancer is selected and the client calls "Fund Escrow" in dashboard.
+        const { Keypair } = await import("@solana/web3.js");
+        const placeholderFreelancer = Keypair.generate();
+
+        const txHash = await sdk.initializeSol(amountInLamports, placeholderFreelancer.publicKey);
+        const [escrowPda] = await sdk.findEscrowPDA(publicKey, placeholderFreelancer.publicKey);
+
+        // ─── Step 3: Persist escrow info back to DB ────────────────────────
+        await fetch(`${API}/${job._id}/fund-escrow`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            escrowAddress: escrowPda.toBase58(),
+            freelancerWallet: placeholderFreelancer.publicKey.toBase58(),
+            txHash,
+            walletAddress: publicKey.toBase58(),
+          }),
+        });
+      }
+
+      setSubmitStep("done");
+      router.push("/dashboard/client");
+    } catch (error) {
+      console.error("Failed to create job:", error);
+      alert("Failed to create job: " + (error as Error).message);
+      setSubmitStep("idle");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const stepLabel: Record<string, string> = {
+    idle: "Deploy Job Contract",
+    saving: "Saving to database…",
+    signing: "Sign transaction in wallet…",
+    done: "Done!",
+  };
   return (
     <main className="pt-28 pb-20 min-h-screen px-6 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
       {/* Left: Multi-Step Flow */}
@@ -131,10 +223,12 @@ export default function CreateJob() {
                   <select
                     id="timeline"
                     className="w-full bg-surface-container-low border-none rounded-2xl py-4 pl-12 pr-5 text-lg focus:ring-2 focus:ring-primary/20 transition-all appearance-none outline-none"
+                    value={timeline}
+                    onChange={(e) => setTimeline(e.target.value)}
                   >
-                    <option>Fixed 2 Weeks</option>
-                    <option>1 Month</option>
-                    <option>Long Term</option>
+                    <option value="2weeks">Fixed 2 Weeks</option>
+                    <option value="1month">1 Month</option>
+                    <option value="longterm">Long Term</option>
                   </select>
                 </div>
               </div>
@@ -216,9 +310,13 @@ export default function CreateJob() {
           </div>
 
           <div className="pt-8">
-            <button className="w-full bg-gradient-to-r from-primary to-secondary-container shadow-[0_0_20px_rgba(102,0,192,0.3)] py-5 rounded-2xl text-white font-bold text-lg flex items-center justify-center gap-3 hover:scale-[1.01] active:scale-[0.98] transition-all cursor-pointer">
+            <button
+              onClick={handleSubmit}
+              disabled={isSubmitting}
+              className="w-full bg-gradient-to-r from-primary to-secondary-container shadow-[0_0_20px_rgba(102,0,192,0.3)] py-5 rounded-2xl text-white font-bold text-lg flex items-center justify-center gap-3 hover:scale-[1.01] active:scale-[0.98] transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+            >
               <span className="material-symbols-outlined">rocket_launch</span>
-              Submit to Blockchain
+              {isSubmitting ? stepLabel[submitStep] : stepLabel["idle"]}
             </button>
             <p className="text-center text-xs text-outline mt-4 font-mono uppercase tracking-widest">
               Transaction fee: 0.002 SOL
