@@ -1,6 +1,8 @@
-# ── Dependencies ────────────────────────────────────────────────────────────────
-node_modules
-.pnp
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
 .pnp.*
 .yarn/*
 !.yarn/patches
@@ -8,44 +10,32 @@ node_modules
 !.yarn/releases
 !.yarn/versions
 
-# ── pnpm ────────────────────────────────────────────────────────────────────────
-.pnpm-store
-.pnpm-debug.log*
-
-# ── Next.js ─────────────────────────────────────────────────────────────────────
-.next/
-out/
-next-env.d.ts
-
-# ── Build outputs ───────────────────────────────────────────────────────────────
-dist/
-build/
+# testing
 /coverage
 
-# ── Turbo ───────────────────────────────────────────────────────────────────────
-.turbo/
+# next.js
+/.next/
+/out/
 
-# ── Solana / Anchor ─────────────────────────────────────────────────────────────
-target/
-.anchor/
-test-ledger/
+# production
+/build
 
-# ── Environment files ────────────────────────────────────────────────────────────
-.env
-.env.*
-!.env.example
-
-# ── Misc ────────────────────────────────────────────────────────────────────────
+# misc
 .DS_Store
 *.pem
-*.tsbuildinfo
-Thumbs.db
-nul
 
-# ── Debug logs ───────────────────────────────────────────────────────────────────
+# debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.pnpm-debug.log*
 
-# ── Vercel ───────────────────────────────────────────────────────────────────────
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
 .vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts

@@ -1,8 +1,0 @@
-{
-  "extends": "@chainwork/config/tsconfig/nextjs.json",
-  "compilerOptions": {
-    "paths": { "@chainwork/ui/*": ["./src/*"] }
-  },
-  "include": ["src/**/*.ts", "src/**/*.tsx"],
-  "exclude": ["node_modules", "dist"]
-}
